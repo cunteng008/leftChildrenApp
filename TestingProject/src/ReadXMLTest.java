@@ -54,7 +54,7 @@ public class ReadXMLTest {
 			}
 		}
 		
-		// ��õ����������Ƿ���ȷ
+		
 		assertTrue(sum == 1420 + 1156 + 1235);
 		
 	}

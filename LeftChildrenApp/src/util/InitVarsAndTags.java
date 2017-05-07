@@ -91,6 +91,9 @@ public class InitVarsAndTags {
 		v10.addTag(new Tag("越来越多的小型私立学校被国家取消办学资格"));
 		v10.addTag(new Tag("其他"));
 		
+		Variable v11 = new Variable();
+		v11.setName("回收站");
+		
 		variableList.addVariable(v1);
 		variableList.addVariable(v2);
 		variableList.addVariable(v3);
@@ -101,6 +104,7 @@ public class InitVarsAndTags {
 		variableList.addVariable(v8);
 		variableList.addVariable(v9);
 		variableList.addVariable(v10);
+		variableList.addVariable(v11);
 		
 	}
 

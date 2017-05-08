@@ -10,6 +10,12 @@ public class News {
 	private boolean hasContent;
 	private String content;
 	private String trueUrl;
+	
+	private List<Variable> variableList;
+
+	public News() {
+		variableList = new ArrayList<Variable>();
+	}
 
 	public void setTitle(String title) {
 	    this.title = title;
@@ -65,6 +71,18 @@ public class News {
 
 	public String getTrueUrl() {
 	    return trueUrl;
+	}
+
+	public void setTagList(List<Variable> variableList) {
+		this.variableList = variableList;
+	}
+	
+	public List<Variable> getTagList() {
+		return variableList;
+	}
+	
+	public void addVariable(Variable variable) {
+		variableList.add(variable);
 	}
 	
 }

@@ -1,28 +1,32 @@
 package model;
 import java.util.*;
 
-public class Location {
+public class Tag {
 	
 	private String name;
 	private List<News> newsList;
 	
-	public Location(String name) {
+	public Tag(String name) {
 		this.name = name;
 		newsList = new ArrayList<News>();
 	}
-
-	public void setName(String name) {
-	    this.name = name;
-	}
-
+	
 	public String getName() {
-	    return name;
+		return name;
 	}
 	
-	public List<News> getNews() {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public List<News> getNewsList() {
 		return newsList;
 	}
 	
+	public void setNewsList(List<News> newsList) {
+		this.newsList = newsList;
+	}
+
 	public void addNews(News news) {
 		newsList.add(news);
 	}

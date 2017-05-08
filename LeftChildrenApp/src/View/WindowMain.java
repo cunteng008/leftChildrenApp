@@ -30,6 +30,7 @@ import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionListener;
@@ -45,7 +46,10 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
-import model.NewsTitle_ID;
+import jlist_renderer.NewsRenderer;
+import model.News;
+import model.NewsList;
+import util.ReadXML;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.JTextArea;
@@ -54,18 +58,19 @@ import javax.swing.JCheckBox;
 import javax.swing.JSeparator;
 import javax.swing.SpinnerListModel;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
 import java.awt.GridLayout;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 public class WindowMain extends WindowRoot {
-   
-	// 新闻显示列表
-	List<NewsTitle_ID> newsTitles = new ArrayList<NewsTitle_ID>();
 	
 	// 标题
 	JLabel lblTitle;
+	int index;
 	
 	// 左部
 	JPanel panelLeft;
@@ -85,16 +90,23 @@ public class WindowMain extends WindowRoot {
 	JPanel panelGraph;
 	JPanel panelNewsContent;
 	JPanel panelTrash;
-	JList listNews;
+	JList newsList;
 	JButton btnPreNews;
 	JButton btnNextNews;	
-	private JScrollPane scrollPane_1;
+	JTextArea txtContent;
+	JLabel lblContentTitle;
+	private JLabel lblContentDate;
+	private JScrollPane scrollPaneContent;
 	boolean graphOpen ;
+	DefaultListModel<News> model;
 	
+		
 	// 右上
 	JLabel lblGraph;
 	JLabel btnTag;
 	boolean btnTagOpen ;
+	private JButton button;
+	
 	
 	public WindowMain() {
 		getContentPane().setLayout(null);
@@ -173,6 +185,11 @@ public class WindowMain extends WindowRoot {
 				+ "LeftChildrenApp\\res\\images\\trash.png"));
 		lblTrash.setBounds(171, 596, 23, 21);
 		panelLeft.add(lblTrash);
+		
+		button = new JButton("导入文件");
+		button.setBounds(91, 5, 93, 23);
+		button.addActionListener(new OpenFileListener(this));
+		panelLeft.add(button);
 	}
 	private void tagTreeMemu(){
 		treeMenu = new JTree();
@@ -255,7 +272,23 @@ public class WindowMain extends WindowRoot {
 			leftSwitchCard("treeMenu");
 		}   
 	 }  
-	
+	 private class OpenFileListener implements ActionListener {
+		JFrame frame;
+		JFileChooser fileChooser = new JFileChooser(new File(System.getProperty("user.dir")));
+		
+		public OpenFileListener(JFrame frame){
+			super();
+			this.frame = frame;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {		
+		    if(fileChooser.showOpenDialog(frame)==JFileChooser.APPROVE_OPTION ){
+		      String fileName = fileChooser.getSelectedFile().getAbsolutePath();
+		      ReadXML.parseXML(fileName);
+		      setListModel();
+		    }
+		}	
+	}
 	
 	 	 
 	// 右边区域
@@ -266,37 +299,60 @@ public class WindowMain extends WindowRoot {
 		getContentPane().add(panelRightBodyCard);
 		panelRightBodyCard.setLayout(new CardLayout(0, 0));
 		
+		//新闻列表
 		panelNewsList = new JPanel();
 		panelNewsList.setBackground(Color.LIGHT_GRAY);
 		panelRightBodyCard.add(panelNewsList, "panelCardNewsList");
 		panelNewsList.setLayout(null);
 		
+		model = new DefaultListModel<>(); 
+		newsList = new JList(model);	
+		newsList.addMouseListener(new newsListListener());
+		newsList.setCellRenderer(new NewsRenderer());
+    	JScrollPane scrollPane = new JScrollPane(newsList);
+		scrollPane.setBounds(51, 48, 692, 507);
+		panelNewsList.add(scrollPane);		
+		
+		//新闻详细
 		panelNewsContent = new JPanel();
 		panelNewsContent.setBackground(Color.LIGHT_GRAY);
 		panelRightBodyCard.add(panelNewsContent, "panelCardNewsContent");
 		panelNewsContent.setLayout(null);
-		
-		newsTitlesList();
-		
+	
 		btnPreNews = new JButton("上一条");
-		btnPreNews.setBounds(39, 545, 93, 29);
+		btnPreNews.addActionListener(new btnPreNewsListener());
+		btnPreNews.setBounds(39, 555, 93, 29);
 		btnPreNews.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panelNewsContent.add(btnPreNews);
 		
 		btnNextNews = new JButton("下一条");
+		btnNextNews.addActionListener(new btnNextNewsListener());
 		btnNextNews.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnNextNews.setBounds(687, 545, 93, 29);
+		btnNextNews.setBounds(687, 555, 93, 29);
 		panelNewsContent.add(btnNextNews);
 		
-		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(39, 46, 725, 489);
-		panelNewsContent.add(scrollPane_1);
+		txtContent = new JTextArea();
+		txtContent.setLineWrap(true); //激活自动断行功能
+		txtContent.setWrapStyleWord(true);// 激活断行不断字功能
+		scrollPaneContent = new JScrollPane(txtContent);
+		scrollPaneContent.setBounds(39, 102, 725, 443);
+		panelNewsContent.add(scrollPaneContent);
 		
-		JTextArea txtreclipsepackagesource = new JTextArea();
-		txtreclipsepackagesource.setText(""
-				+ " ");
-		scrollPane_1.setViewportView(txtreclipsepackagesource);
+		lblContentTitle = new JLabel("New label");
+		lblContentTitle.setFont(new Font("微软雅黑", Font.BOLD, 16));
+		lblContentTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContentTitle.setBounds(39, 10, 725, 63);
+		lblContentTitle.setOpaque(true);  // 不透明
+		lblContentTitle.setForeground(Color.black);
+		panelNewsContent.add(lblContentTitle);
 		
+		lblContentDate = new JLabel("");
+		lblContentDate.setBounds(39, 77, 234, 20);
+		lblContentDate.setOpaque(true);
+		panelNewsContent.add(lblContentDate);
+		
+		
+		//统计图
 		panelGraph = new JPanel();
 		panelGraph.setBackground(Color.LIGHT_GRAY);
 		panelRightBodyCard.add(panelGraph, "panelCardChart");
@@ -308,49 +364,102 @@ public class WindowMain extends WindowRoot {
 		
 		panelGraph.add(label);
 		
-		
+		// 垃圾桶
 		panelTrash = new JPanel();
 		panelTrash.setBackground(Color.LIGHT_GRAY);
 		panelRightBodyCard.add(panelTrash, "panelTrash");
 		panelTrash.setLayout(null);
 		
     }
+    
     private class BtnTagListener implements ActionListener{  
 		 @Override
 		public void actionPerformed(ActionEvent e) {
 			leftSwitchCard("treeMenu");
 		}   
 	 }  
-    private void newsTitlesList(){
-    	JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(51, 48, 692, 507);
-		panelNewsList.add(scrollPane);
-		
-		listNews = new JList();
-		newsTitles.add(new NewsTitle_ID("青少年“身边最让我感动的人”评选揭晓",1));
-		newsTitles.add(new NewsTitle_ID("青少年“身边最让我感动的人”评选揭晓",2));
-		newsTitles.add(new NewsTitle_ID("青少年“身边最让我感动的人”评选揭晓",2));
-		newsTitles.add(new NewsTitle_ID("青少年“身边最让我感动的人”评选揭晓",2));
-		newsTitles.add(new NewsTitle_ID("青少年“身边最让我感动的人”评选揭晓",2));
-		DefaultListModel defaultListModel = new DefaultListModel();
-		for(NewsTitle_ID newsTitle:newsTitles){
-			defaultListModel.addElement(newsTitle.getNewsTile());
+    private void setListModel(){
+       	model.removeAllElements();
+		for(News news:NewsList.getInstance().getNewsList()){
+			model.addElement(news);
 		}
-		 
-		scrollPane.setColumnHeaderView(listNews);
-		listNews.setModel(defaultListModel);
-		listNews.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {				
-				int index = listNews.getSelectedIndex();
+    }
+    private class newsListListener implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			index = newsList.getSelectedIndex();
+			if(index!=-1){
 				if(e.getClickCount()==2){
+					News news = NewsList.getInstance().getNewsList().get(index);
 					switchRightBodyCard("panelCardNewsContent");
+					lblContentTitle.setText("<html>"+news.getTitle()+"</html>");
+					lblContentDate.setText(news.getCalendar().getTime()+"");					
+					txtContent.setText(NewsList.getInstance().getNewsList().get(index).getContent());
 				}
 			}
-		});
-		
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+    	
     }
 	
+    private class btnPreNewsListener  implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			if(--index>0){
+				News news = NewsList.getInstance().getNewsList().get(index);
+				switchRightBodyCard("panelCardNewsContent");
+				lblContentTitle.setText("<html>"+news.getTitle()+"</html>");
+				lblContentDate.setText(news.getCalendar().getTime()+"");					
+				txtContent.setText(NewsList.getInstance().getNewsList().get(index).getContent());
+			}else{
+				index++;
+			}
+		}
+    	
+    }
+    private class btnNextNewsListener  implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			if(++index<NewsList.getInstance().getNewsList().size()){
+				News news = NewsList.getInstance().getNewsList().get(index);
+				switchRightBodyCard("panelCardNewsContent");
+				lblContentTitle.setText("<html>"+news.getTitle()+"</html>");
+				lblContentDate.setText(news.getCalendar().getTime()+"");					
+				txtContent.setText(NewsList.getInstance().getNewsList().get(index).getContent());
+			}else{
+				index--;
+			}
+		}
+    	
+    }
+    
+    
+    
     
     
 	private void rightTopArea(){
@@ -379,11 +488,10 @@ public class WindowMain extends WindowRoot {
 		lblDelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DefaultListModel defaultListModel = (DefaultListModel)listNews.getModel();
-				if(listNews.getSelectedIndex()>=0){
-					System.out.println(listNews.getSelectedIndex());
-					newsTitles.remove(listNews.getSelectedIndex());  //实现列表了Jlist列表的同步删除
-					defaultListModel.remove(listNews.getSelectedIndex());
+				DefaultListModel defaultListModel = (DefaultListModel)newsList.getModel();
+				if(newsList.getSelectedIndex()>=0){
+//					System.out.println(listNews.getSelectedIndex());
+//					defaultListModel.remove(listNews.getSelectedIndex());
 				}			
 			}
 		});
@@ -407,6 +515,10 @@ public class WindowMain extends WindowRoot {
 		btnTag.setIcon(new ImageIcon("D:\\cmj\\MyProject\\eclipse\\leftChildrenApplication\\LeftChildrenApp\\res\\images\\tag.png"));
 	}
     
+	
+	
+	
+	
 	
 	// 切换页面
 	void switchRightBodyCard(String card){

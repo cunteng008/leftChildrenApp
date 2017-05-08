@@ -2,10 +2,8 @@ package util;
 import java.io.*;
 import java.util.*;
 import org.w3c.dom.*;
-
-import model.Location;
-import model.LocationCollection;
 import model.News;
+import model.NewsList;
 
 import javax.xml.parsers.*;
 
@@ -13,21 +11,14 @@ import sun.misc.*;
 
 public class ReadXML {
 	
-	public static void importLocation(String locationStr) {
-		Location location = new Location(locationStr);
-		parseXML(location);
+	public static void parseXML(String locationName) {
 		
-		LocationCollection locationCollection = LocationCollection.getInstance();
-		locationCollection.addLocation(location);
-	}
-	
-	public static void parseXML(Location location) {
+		NewsList newsListSingleton = NewsList.getInstance();
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		
 		try {
-			File f = new File("D:/cmj/MyProject/eclipse/leftChildrenApplication/LeftChildrenApp"
-					+ "/res/xmlData/" + location.getName() + ".xml");
+			File f = new File(locationName);
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(f);
 			
@@ -96,7 +87,7 @@ public class ReadXML {
 				
 //				System.out.println();
 				
-				location.addNews(news);
+				newsListSingleton.addNews(news);
 				
 			}
 		} catch (Exception e) {

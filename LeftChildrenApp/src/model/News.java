@@ -62,6 +62,9 @@ public class News {
 	}
 
 	public String getContent() {
+		if(content==null){
+			return "需要连接URL显示网页内容";
+		}
 	    return content;
 	}
 

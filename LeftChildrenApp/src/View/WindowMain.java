@@ -49,6 +49,8 @@ import javax.swing.tree.TreePath;
 import jlist_renderer.NewsRenderer;
 import model.News;
 import model.NewsList;
+import model.Tag;
+import model.VariableList;
 import util.ReadXML;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -65,6 +67,7 @@ import javax.swing.DefaultListModel;
 import java.awt.GridLayout;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.ListModel;
 
 public class WindowMain extends WindowRoot {
 	
@@ -89,8 +92,7 @@ public class WindowMain extends WindowRoot {
 	JPanel panelNewsList;
 	JPanel panelGraph;
 	JPanel panelNewsContent;
-	JPanel panelTrash;
-	JList newsList;
+	JList  jlist;
 	JButton btnPreNews;
 	JButton btnNextNews;	
 	JTextArea txtContent;
@@ -99,6 +101,7 @@ public class WindowMain extends WindowRoot {
 	private JScrollPane scrollPaneContent;
 	boolean graphOpen ;
 	DefaultListModel<News> model;
+	List<News> newsList;
 	
 		
 	// 右上
@@ -106,6 +109,8 @@ public class WindowMain extends WindowRoot {
 	JLabel btnTag;
 	boolean btnTagOpen ;
 	private JButton button;
+	JLabel lblDelete;
+	
 	
 	
 	public WindowMain() {
@@ -174,12 +179,7 @@ public class WindowMain extends WindowRoot {
 		tagSelectArea();
 		
 		lblTrash = new JLabel("New label");
-		lblTrash.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				switchRightBodyCard("panelTrash");
-			}
-		});
+		lblTrash.addMouseListener(new TrashListener());
 		lblTrash.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		lblTrash.setIcon(new ImageIcon("D:\\cmj\\MyProject\\eclipse\\leftChildrenApplication\\"
 				+ "LeftChildrenApp\\res\\images\\trash.png"));
@@ -285,10 +285,45 @@ public class WindowMain extends WindowRoot {
 		    if(fileChooser.showOpenDialog(frame)==JFileChooser.APPROVE_OPTION ){
 		      String fileName = fileChooser.getSelectedFile().getAbsolutePath();
 		      ReadXML.parseXML(fileName);
+		      newsList = NewsList.getInstance().getNewsList();
 		      setListModel();
 		    }
 		}	
 	}
+	 private class TrashListener implements MouseListener{
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				newsList = VariableList.getInstance().getVariableList().get(10).
+						getTagList().get(0).getNewsList();	
+				setListModel();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		}
 	
 	 	 
 	// 右边区域
@@ -306,10 +341,10 @@ public class WindowMain extends WindowRoot {
 		panelNewsList.setLayout(null);
 		
 		model = new DefaultListModel<>(); 
-		newsList = new JList(model);	
-		newsList.addMouseListener(new newsListListener());
-		newsList.setCellRenderer(new NewsRenderer());
-    	JScrollPane scrollPane = new JScrollPane(newsList);
+		jlist = new JList(model);	
+		jlist.addMouseListener(new newsListListener());
+		jlist.setCellRenderer(new NewsRenderer());
+    	JScrollPane scrollPane = new JScrollPane(jlist);
 		scrollPane.setBounds(51, 48, 692, 507);
 		panelNewsList.add(scrollPane);		
 		
@@ -364,12 +399,6 @@ public class WindowMain extends WindowRoot {
 		
 		panelGraph.add(label);
 		
-		// 垃圾桶
-		panelTrash = new JPanel();
-		panelTrash.setBackground(Color.LIGHT_GRAY);
-		panelRightBodyCard.add(panelTrash, "panelTrash");
-		panelTrash.setLayout(null);
-		
     }
     
     private class BtnTagListener implements ActionListener{  
@@ -380,7 +409,7 @@ public class WindowMain extends WindowRoot {
 	 }  
     private void setListModel(){
        	model.removeAllElements();
-		for(News news:NewsList.getInstance().getNewsList()){
+		for(News news:newsList){
 			model.addElement(news);
 		}
     }
@@ -389,7 +418,7 @@ public class WindowMain extends WindowRoot {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			index = newsList.getSelectedIndex();
+			index = jlist.getSelectedIndex();
 			if(index!=-1){
 				if(e.getClickCount()==2){
 					News news = NewsList.getInstance().getNewsList().get(index);
@@ -459,9 +488,6 @@ public class WindowMain extends WindowRoot {
     }
     
     
-    
-    
-    
 	private void rightTopArea(){
 		JPanel panelRightTop = new JPanel();
 		panelRightTop.setBounds(194, 34, 790, 34);
@@ -482,20 +508,12 @@ public class WindowMain extends WindowRoot {
 		lblGraph.setBounds(746, 0, 44, 34);
 		panelRightTop.add(lblGraph);
 		
-		JLabel lblDelete = new JLabel("");
+		lblDelete = new JLabel("");
 		lblDelete.setBounds(702, 0, 20, 28);
 		panelRightTop.add(lblDelete);
-		lblDelete.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				DefaultListModel defaultListModel = (DefaultListModel)newsList.getModel();
-				if(newsList.getSelectedIndex()>=0){
-//					System.out.println(listNews.getSelectedIndex());
-//					defaultListModel.remove(listNews.getSelectedIndex());
-				}			
-			}
-		});
-		lblDelete.setIcon(new ImageIcon("D:\\cmj\\MyProject\\eclipse\\leftChildrenApplication\\LeftChildrenApp\\res\\images\\trash.png"));
+		lblDelete.addMouseListener(new DeleteListener());
+		lblDelete.setIcon(new ImageIcon("D:\\cmj\\MyProject\\eclipse\\leftChildrenApplication\\"
+				+ "LeftChildrenApp\\res\\images\\trash.png"));
 		
 		btnTag = new JLabel("");
 		btnTag.setBounds(659, 0, 25, 29);
@@ -512,13 +530,56 @@ public class WindowMain extends WindowRoot {
 				}
 			}
 		});
-		btnTag.setIcon(new ImageIcon("D:\\cmj\\MyProject\\eclipse\\leftChildrenApplication\\LeftChildrenApp\\res\\images\\tag.png"));
+		btnTag.setIcon(new ImageIcon("D:\\cmj\\MyProject\\eclipse\\leftChildrenApplication\\"
+				+ "LeftChildrenApp\\res\\images\\tag.png"));
 	}
+	private class DeleteListener implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			// TODO Auto-generated method stub				
+			DefaultListModel defaultListModel = (DefaultListModel)jlist.getModel();
+			index = jlist.getSelectedIndex();
+			if(jlist.getSelectedIndex()>=0){
+				Tag trachTag = VariableList.getInstance().getVariableList().get(10).getTagList()
+						.get(0);
+				trachTag.addNews(newsList.get(index));
+				newsList.remove(index);
+				defaultListModel.remove(index);
+				for(News news: trachTag.getNewsList()){
+					System.out.println("添加了"+news.getTitle());
+				}
+			}						
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	
     
-	
-	
-	
-	
 	
 	// 切换页面
 	void switchRightBodyCard(String card){

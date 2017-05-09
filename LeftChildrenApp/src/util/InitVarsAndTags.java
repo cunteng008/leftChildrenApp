@@ -92,10 +92,8 @@ public class InitVarsAndTags {
 		v10.addTag(new Tag("其他"));
 		
 		Variable v11 = new Variable();
-		v11.setName("未分类");
-		
-		Variable v12 = new Variable();
-		v12.setName("回收站");
+		v11.setName("回收站");
+		v11.addTag(new Tag("垃圾"));
 				
 		variableList.addVariable(v1);
 		variableList.addVariable(v2);
@@ -108,7 +106,6 @@ public class InitVarsAndTags {
 		variableList.addVariable(v9);
 		variableList.addVariable(v10);
 		variableList.addVariable(v11);
-		variableList.addVariable(v12);
 		
 	}
 

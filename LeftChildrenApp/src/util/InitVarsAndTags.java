@@ -30,10 +30,10 @@ public class InitVarsAndTags {
 		Variable v4 = new Variable();
 		v4.setName("报道主题");
 		v4.addTag(new Tag("社会各界帮助关爱"));
-		v4.addTag(new Tag("社会各界对留守儿童现象提出的建议和看法"));
-		v4.addTag(new Tag("表彰帮助关爱留守儿童的单位或个人"));
+		v4.addTag(new Tag("建议和看法"));
+		v4.addTag(new Tag("表彰的单位或个人"));
 		v4.addTag(new Tag("留守儿童遭受暴力"));
-		v4.addTag(new Tag("留守儿童被性侵、猥亵、强奸，或是怀孕、生子等"));
+		v4.addTag(new Tag("留守儿童被性侵等"));
 		v4.addTag(new Tag("留守儿童犯罪等"));
 		v4.addTag(new Tag("留守儿童意外死亡"));
 		v4.addTag(new Tag("留守儿童努力上进"));
@@ -84,11 +84,11 @@ public class InitVarsAndTags {
 		v9.addTag(new Tag("个人"));
 		
 		Variable v10 = new Variable();
-		v10.setName("新闻报道中有关农民工子女不能留在城市读书的原因");
+		v10.setName("农民工子女不能留城读书原因");
 		v10.addTag(new Tag("无本地户籍难入公立学校"));
 		v10.addTag(new Tag("私立学校学费高"));
 		v10.addTag(new Tag("私立学校教学质量没保障"));
-		v10.addTag(new Tag("越来越多的小型私立学校被国家取消办学资格"));
+		v10.addTag(new Tag("小型私立学校被国家取消办学资格"));
 		v10.addTag(new Tag("其他"));
 		
 		Variable v11 = new Variable();

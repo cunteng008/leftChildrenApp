@@ -28,7 +28,21 @@ public class Tag {
 	}
 
 	public void addNews(News news) {
-		newsList.add(news);
+		newsList.add(news);			
+	}
+	public void removeNews(int index){
+		if(index<0 && index>=newsList.size()){
+			return;
+		}
+		newsList.remove(index);
+	}
+	public void removeNews(News news){
+		if(newsList.contains(news)){
+			newsList.remove(news);
+		}
+	}
+	public boolean hasNews(News news){
+		return newsList.contains(news);
 	}
 	
 }

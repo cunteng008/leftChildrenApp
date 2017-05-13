@@ -80,12 +80,18 @@ public class News {
 		this.variableList = variableList;
 	}
 	
-	public List<Variable> getTagList() {
+	public List<Variable> getVaribleList() {
 		return variableList;
 	}
 	
 	public void addVariable(Variable variable) {
 		variableList.add(variable);
+	}
+	public void removeAllVariable(){
+		variableList.removeAll(variableList);
+	}
+	public void clearVariable(){
+		variableList.removeAll(variableList);
 	}
 	
 }

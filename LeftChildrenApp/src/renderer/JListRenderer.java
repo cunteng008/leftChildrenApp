@@ -1,27 +1,34 @@
-package jlist_renderer;
+package renderer;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.EventObject;
 
+import javax.swing.CellEditor;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
+import javax.swing.event.CellEditorListener;
 
 import model.News;
 
-public class NewsRenderer extends JPanel implements ListCellRenderer<News>{
-
+public class JListRenderer extends JPanel implements ListCellRenderer<News>{
 	
 	private JLabel lblNewsTitle = new JLabel();
 	  
-	public NewsRenderer(){
-		setLayout(new FlowLayout());  
+	public JListRenderer(){
+		setLayout(new BorderLayout());  
 		JPanel panelText = new JPanel(new GridLayout(0, 1));
-        panelText.add(lblNewsTitle);
-       
-        add(panelText);
+        panelText.add(lblNewsTitle);       
+        add(panelText,BorderLayout.CENTER);
+        this.setFocusable(true);
 	}
 	@Override
 	public Component getListCellRendererComponent(JList<? extends News> list, News news,
@@ -41,5 +48,5 @@ public class NewsRenderer extends JPanel implements ListCellRenderer<News>{
 		
 		return this;
 	}
-
+	
 }

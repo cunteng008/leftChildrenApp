@@ -79,7 +79,7 @@ public class WindowRecycleBin extends WindowRoot{
 		JButton btnBack = new JButton("返回");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				dispose();
 			}
 		});
 		btnBack.setBounds(131, 604, 93, 23);
@@ -87,7 +87,7 @@ public class WindowRecycleBin extends WindowRoot{
 		
 		JButton btnNewsBack = new JButton("还原");
 		btnNewsBack.addActionListener(new NewsBackListener());
-		btnNewsBack.setBounds(97, 162, 93, 23);
+		btnNewsBack.setBounds(131, 225, 93, 23);
 		panel.add(btnNewsBack);
 		newsList = VariableList.getInstance().getVariableList().
 						get(10).getTagList().get(0).getNewsList();
@@ -157,7 +157,7 @@ public class WindowRecycleBin extends WindowRoot{
 	private class NewsBackListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 				
-			    if(index<0 && index>=newsList.size()){
+			    if(index<0 || index>=newsList.size()){
 			    	return;
 			    }
 			    

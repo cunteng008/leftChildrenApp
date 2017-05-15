@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfNewsData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <NewsData>
+        <TagIts />
+        <IsLoad>true</IsLoad>
+        <IsDeleted />
+        <Memo />
+        <Title>青少年“身边最让我感动的人”评选揭晓</Title>
+        <Date>2006-01-16</Date>
+        <Location>光明日报</Location>
+        <Url>http://wisesearch.wisers.net.libezproxy.must.edu.mo/wortal/tool.do;jsessionid=4C5C7CA9D1D15177612A4E5E34FAD8EE.wise24?wp_dispatch=confirm-view&amp;federated=true&amp;doc-ids=news:23lh^200601161410077(S:193916305)&amp;menu-id=&amp;on-what=selected&amp;from-list&amp;display-style=all&amp;tooldisplay=true&amp;currentsubdb=wiseselect</Url>
+        <Type>02,教科文衞</Type>
+        <WordCount>399</WordCount>
+        <ID>news:23lh^200601161410077(S:193916305)</ID>
+        <TrueUrl />
+        <Tags>张三,李四</Tags>
+        <EncodedContent>PABoAHQAbQBsAD4APABiAG8AZAB5AD4APABQAD4ALGelYhdTrE4xAAhnMQA1AOVlNXWwiwWATmd3bcB5zk7iVi1OLlm3g4lgLABoUf1WUpcRXHReHCCrjrmPAGepixFiH2GoUoR2uk4dIMSLCZA7bahS0Y/lZShXF1OsTu1jU2YCMGVRCZAFgAlnOgDcj7VfKll6eiwAOk5xUYxU/VZ9j7pOKoIpWYtOGk5cT/pRcGf6USGNLnOEdvGCxJYqgilZWFSkf1NPFCAUIBQgaGcpUh9PATA5jcpPmZ8BMEKAd23cgDsAx1I6WdGRTHIsADpOVnn9VmKNl1/oXSdZY4OJioR2LU79VjB1hF8fltCPqFJYVBhS1H87ANdfP2EvZVllLADgZcF5SVkuc4R2TlMtTpxRGk4nWWZbnFEaTs9+Tm2hewZ0E04aThR4dnofdZBfLGe5eTsAhlM9XHCCm48sADpkJl4cIANfdFq5WblZHSBCbGZbMQAyAH2PhHZWbldTAGAWU2ZbYpYnWWZbH3UqbRhiiY87AE5t8FapUmZbLABoUcNflWKrjmxRynY7bahShHbxbTNXAl5JTuVdVIB6gi9n4lbiVn+VG07emDsA4nfXXxtSsGUsAChXcGVXWxpZklpTT6+CR3KGmN9XU2IgkBwgLU79Vq+CHSCEdhdTrE4tTh9mrl81dVBbCWdQlmxR+FNjhItOf5WTkC1O8H87AMl5bFGeUkhoLACXYolOxXVUmywAWlcBY9Vsi186ThFsDWehUoR20Z6Zn19sAXeBW4lbAl66ThFs1WxilhxOrE7OV9VsrV6hWyRSWFTRkUJocFEoAHNZLAAdZ5ycz2UpADsAZ2JAd+BllGAsAChXH3V7a6t9Ck7vYlFlMXK7WQBOQ1MaWSpO5WXlZRxZHFmEdrNsF1OikPBT4lYCXtRZcl7okOGAUFuPWzsAamCIW11bU5AsAMyAQHfNkcV1zWuyTkJsZlvbj9ZThHazbFdTAXcAXwFcAl79VrZbDnqhUkBc0XlYVCBfGlwAZjsAYWP+YoNXPlcsADtS5oJmW2BOLADEfsd+HCBZdYhbP1Hleh0gkk74di5eqVKEdolbvV8Bd6WAHE6/U21RtltIdUeVe1Fjay1Ow19mWyFoEVxIUR+WWFQtjHdtjn8oAHNZKQA7AElZLnMxcsNfLAC+fMNf+Vd7UTEAOQAqTmRbP1GMVCuN8FY/UeV6hHa9j4FbTGtnUmKWFG9PWVhU0ZGFjy1OAjAgADwALwBQAD4APAAvAGIAbwBkAHkAPgA8AC8AaAB0AG0AbAA+AA==</EncodedContent>
+    </NewsData>
+    <NewsData>
+        <TagIts />
+        <IsLoad>true</IsLoad>
+        <IsDeleted />
+        <Memo />
+        <Title>我省检察机关首次公布未成年人保护典型案例</Title>
+        <Date>2015-12-29</Date>
+        <Location>四川日报(数字报)</Location>
+        <Url>http://wisesearch.wisers.net.libezproxy.must.edu.mo/wortal/tool.do;jsessionid=06B0BA5DD802A624C456544E4D205B2E.wise21?wp_dispatch=confirm-view&amp;federated=true&amp;doc-ids=news:15jl^201512293153338(S:196124888)&amp;menu-id=&amp;on-what=selected&amp;from-list&amp;display-style=all&amp;tooldisplay=true&amp;currentsubdb=wiseselect</Url>
+        <Type>11,时政新闻?社会新闻</Type>
+        <WordCount>502</WordCount>
+        <ID>news:15jl^201512293153338(S:196124888)</ID>
+        <TrueUrl>http://epaper.scdaily.cn/shtml/scrb/20151229/119905.shtml</TrueUrl>
+        <Tags />
+        <EncodedContent />
+    </NewsData>
+</ArrayOfNewsData>

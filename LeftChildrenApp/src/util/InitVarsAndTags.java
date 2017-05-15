@@ -11,89 +11,90 @@ public class InitVarsAndTags {
 		VariableList variableList = VariableList.getInstance();
 		
 		Variable v1 = new Variable();
-		v1.setName("±¨Ö½ÀàĞÍ");
-		v1.addTag(new Tag("ÖĞÑëÒ»¼¶µÄµ³±¨"));
-		v1.addTag(new Tag("Ê¡Ò»¼¶µÄµ³±¨"));
-		v1.addTag(new Tag("¾­ÓªÄ£Ê½ÊĞ³¡»¯µÄ±¨Ö½"));
+		v1.setName("æŠ¥çº¸ç±»å‹");
+		v1.addTag(new Tag("ä¸­å¤®ä¸€çº§çš„å…šæŠ¥"));
+		v1.addTag(new Tag("çœä¸€çº§çš„å…šæŠ¥"));
+		v1.addTag(new Tag("ç»è¥æ¨¡å¼å¸‚åœºåŒ–çš„æŠ¥çº¸"));
 		
 		Variable v2 = new Variable();
-		v2.setName("ĞÂÎÅÀàĞÍ");
-		v2.addTag(new Tag("´¿¾»ĞÂÎÅ"));
-		v2.addTag(new Tag("ÌØ¸åÓëÌØĞ´"));
-		v2.addTag(new Tag("ÆÀÂÛ"));
-		v2.addTag(new Tag("ÆäËû"));
+		v2.setName("æ–°é—»ç±»å‹");
+		v2.addTag(new Tag("çº¯å‡€æ–°é—»"));
+		v2.addTag(new Tag("ç‰¹ç¨¿ä¸ç‰¹å†™"));
+		v2.addTag(new Tag("è¯„è®º"));
+		v2.addTag(new Tag("å…¶ä»–"));
 		
-		/* ´ıÉÌÈ¶ */
+//		/* å¾…å•†æ¦· */
 		Variable v3 = new Variable();
-		v3.setName("±¨µÀÊıÁ¿");
+		v3.setName("æŠ¥é“æ•°é‡");
 		
 		Variable v4 = new Variable();
-		v4.setName("±¨µÀÖ÷Ìâ");
-		v4.addTag(new Tag("Éç»á¸÷½ç°ïÖú¹Ø°®"));
-		v4.addTag(new Tag("Éç»á¸÷½ç¶ÔÁôÊØ¶ùÍ¯ÏÖÏóÌá³öµÄ½¨ÒéºÍ¿´·¨"));
-		v4.addTag(new Tag("±íÕÃ°ïÖú¹Ø°®ÁôÊØ¶ùÍ¯µÄµ¥Î»»ò¸öÈË"));
-		v4.addTag(new Tag("ÁôÊØ¶ùÍ¯ÔâÊÜ±©Á¦"));
-		v4.addTag(new Tag("ÁôÊØ¶ùÍ¯±»ĞÔÇÖ¡¢â«Ùô¡¢Ç¿¼é£¬»òÊÇ»³ÔĞ¡¢Éú×ÓµÈ"));
-		v4.addTag(new Tag("ÁôÊØ¶ùÍ¯·¸×ïµÈ"));
-		v4.addTag(new Tag("ÁôÊØ¶ùÍ¯ÒâÍâËÀÍö"));
-		v4.addTag(new Tag("ÁôÊØ¶ùÍ¯Å¬Á¦ÉÏ½ø"));
-		v4.addTag(new Tag("´ò¹¤¸¸Ä¸ÔÚ³ÇÊĞ¼èÄÑµÄÉú»î"));
-		v4.addTag(new Tag("ÆäËû"));
+		v4.setName("æŠ¥é“ä¸»é¢˜");
+		v4.addTag(new Tag("ç¤¾ä¼šå„ç•Œå¸®åŠ©å…³çˆ±"));
+		v4.addTag(new Tag("å»ºè®®å’Œçœ‹æ³•"));
+		v4.addTag(new Tag("è¡¨å½°çš„å•ä½æˆ–ä¸ªäºº"));
+		v4.addTag(new Tag("ç•™å®ˆå„¿ç«¥é­å—æš´åŠ›"));
+		v4.addTag(new Tag("ç•™å®ˆå„¿ç«¥è¢«æ€§ä¾µç­‰"));
+		v4.addTag(new Tag("ç•™å®ˆå„¿ç«¥çŠ¯ç½ªç­‰"));
+		v4.addTag(new Tag("ç•™å®ˆå„¿ç«¥æ„å¤–æ­»äº¡"));
+		v4.addTag(new Tag("ç•™å®ˆå„¿ç«¥åŠªåŠ›ä¸Šè¿›"));
+		v4.addTag(new Tag("æ‰“å·¥çˆ¶æ¯åœ¨åŸå¸‚è‰°éš¾çš„ç”Ÿæ´»"));
+		v4.addTag(new Tag("å…¶ä»–"));
 
 		Variable v5 = new Variable();
-		v5.setName("ĞÂÎÅ±¨µÀÏûÏ¢À´Ô´");
-		v5.addTag(new Tag("¼ÇÕß"));
-		v5.addTag(new Tag("Õş¸®"));
-		v5.addTag(new Tag("ÆóÒµ"));
-		v5.addTag(new Tag("ÊÂÒµµ¥Î»"));
-		v5.addTag(new Tag("¹«ÒæÍÅÌå"));
-		v5.addTag(new Tag("×¨¼ÒÑ§Õß"));
-		v5.addTag(new Tag("Õş¸®Áìµ¼¡¢ÕşĞ­»òÈË´ó´ú±í"));
-		v5.addTag(new Tag("ÆäËû"));
+		v5.setName("æ–°é—»æŠ¥é“æ¶ˆæ¯æ¥æº");
+		v5.addTag(new Tag("è®°è€…"));
+		v5.addTag(new Tag("æ”¿åºœ"));
+		v5.addTag(new Tag("ä¼ä¸š"));
+		v5.addTag(new Tag("äº‹ä¸šå•ä½"));
+		v5.addTag(new Tag("å…¬ç›Šå›¢ä½“"));
+		v5.addTag(new Tag("ä¸“å®¶å­¦è€…"));
+		v5.addTag(new Tag("æ”¿åºœé¢†å¯¼ã€æ”¿åæˆ–äººå¤§ä»£è¡¨"));
+		v5.addTag(new Tag("å…¶ä»–"));
 
 		Variable v6 = new Variable();
-		v6.setName("Ã½½éĞÎÏó³ÊÏÖ");
-		v6.addTag(new Tag("»ı¼«½¡¿µµÄĞÎÏó"));
-		v6.addTag(new Tag("¿ÉÁ¯±¯²ÒµÄĞÎÏó"));
-		v6.addTag(new Tag("ãå¶÷ĞÒ¸£µÄĞÎÏó"));
-		v6.addTag(new Tag("ÎÊÌâ¶ùÍ¯µÄĞÎÏó"));
-		v6.addTag(new Tag("ÆäËû"));
+		v6.setName("åª’ä»‹å½¢è±¡å‘ˆç°");
+		v6.addTag(new Tag("ç§¯æå¥åº·çš„å½¢è±¡"));
+		v6.addTag(new Tag("å¯æ€œæ‚²æƒ¨çš„å½¢è±¡"));
+		v6.addTag(new Tag("æ²æ©å¹¸ç¦çš„å½¢è±¡"));
+		v6.addTag(new Tag("é—®é¢˜å„¿ç«¥çš„å½¢è±¡"));
+		v6.addTag(new Tag("å…¶ä»–"));
 		
 		Variable v7 = new Variable();
-		v7.setName("°ïÖúĞÂÎÅµÄ¾ßÌåÖÖÀà");
-		v7.addTag(new Tag("µ¥´¿Ò»´Î¾è¿î¾èÎï"));
-		v7.addTag(new Tag("ÂÃÓÎ»î¶¯°²ÅÅµÄÏîÄ¿Ö®Ò»"));
-		v7.addTag(new Tag("Ãâ·Ñ¿ª·Å"));
-		v7.addTag(new Tag("ÉèÁ¢³¤ÆÚ×ÊÖúÏîÄ¿"));
-		v7.addTag(new Tag("ÆäËû"));
+		v7.setName("å¸®åŠ©æ–°é—»çš„å…·ä½“ç§ç±»");
+		v7.addTag(new Tag("å•çº¯ä¸€æ¬¡ææ¬¾æç‰©"));
+		v7.addTag(new Tag("æ—…æ¸¸æ´»åŠ¨å®‰æ’çš„é¡¹ç›®ä¹‹ä¸€"));
+		v7.addTag(new Tag("å…è´¹å¼€æ”¾"));
+		v7.addTag(new Tag("è®¾ç«‹é•¿æœŸèµ„åŠ©é¡¹ç›®"));
+		v7.addTag(new Tag("å…¶ä»–"));
 		
 		Variable v8 = new Variable();
-		v8.setName("°ïÖúÀàĞÂÎÅµÄÖ÷Ìå");
-		v8.addTag(new Tag("Õş¸®²¿ÃÅ"));
-		v8.addTag(new Tag("ÆóÒµ"));
-		v8.addTag(new Tag("ÊÂÒµµ¥Î»"));
-		v8.addTag(new Tag("¹«ÒæÍÅÌå"));
-		v8.addTag(new Tag("¸öÈË"));
+		v8.setName("å¸®åŠ©ç±»æ–°é—»çš„ä¸»ä½“");
+		v8.addTag(new Tag("æ”¿åºœéƒ¨é—¨"));
+		v8.addTag(new Tag("ä¼ä¸š"));
+		v8.addTag(new Tag("äº‹ä¸šå•ä½"));
+		v8.addTag(new Tag("å…¬ç›Šå›¢ä½“"));
+		v8.addTag(new Tag("ä¸ªäºº"));
 		
 		Variable v9 = new Variable();
-		v9.setName("±íÕÃ½±ÀøµÄĞÂÎÅÖ÷Ìå");
-		v9.addTag(new Tag("Õş¸®²¿ÃÅ"));
-		v9.addTag(new Tag("ÆóÒµ"));
-		v9.addTag(new Tag("ÊÂÒµµ¥Î»"));
-		v9.addTag(new Tag("¹«ÒæÍÅÌå"));
-		v9.addTag(new Tag("¸öÈË"));
+		v9.setName("è¡¨å½°å¥–åŠ±çš„æ–°é—»ä¸»ä½“");
+		v9.addTag(new Tag("æ”¿åºœéƒ¨é—¨"));
+		v9.addTag(new Tag("ä¼ä¸š"));
+		v9.addTag(new Tag("äº‹ä¸šå•ä½"));
+		v9.addTag(new Tag("å…¬ç›Šå›¢ä½“"));
+		v9.addTag(new Tag("ä¸ªäºº"));
 		
 		Variable v10 = new Variable();
-		v10.setName("ĞÂÎÅ±¨µÀÖĞÓĞ¹ØÅ©Ãñ¹¤×ÓÅ®²»ÄÜÁôÔÚ³ÇÊĞ¶ÁÊéµÄÔ­Òò");
-		v10.addTag(new Tag("ÎŞ±¾µØ»§¼®ÄÑÈë¹«Á¢Ñ§Ğ£"));
-		v10.addTag(new Tag("Ë½Á¢Ñ§Ğ£Ñ§·Ñ¸ß"));
-		v10.addTag(new Tag("Ë½Á¢Ñ§Ğ£½ÌÑ§ÖÊÁ¿Ã»±£ÕÏ"));
-		v10.addTag(new Tag("Ô½À´Ô½¶àµÄĞ¡ĞÍË½Á¢Ñ§Ğ£±»¹ú¼ÒÈ¡Ïû°ìÑ§×Ê¸ñ"));
-		v10.addTag(new Tag("ÆäËû"));
+		v10.setName("å†œæ°‘å·¥å­å¥³ä¸èƒ½ç•™åŸè¯»ä¹¦åŸå› ");
+		v10.addTag(new Tag("æ— æœ¬åœ°æˆ·ç±éš¾å…¥å…¬ç«‹å­¦æ ¡"));
+		v10.addTag(new Tag("ç§ç«‹å­¦æ ¡å­¦è´¹é«˜"));
+		v10.addTag(new Tag("ç§ç«‹å­¦æ ¡æ•™å­¦è´¨é‡æ²¡ä¿éšœ"));
+		v10.addTag(new Tag("å°å‹ç§ç«‹å­¦æ ¡è¢«å›½å®¶å–æ¶ˆåŠå­¦èµ„æ ¼"));
+		v10.addTag(new Tag("å…¶ä»–"));
 		
 		Variable v11 = new Variable();
-		v11.setName("»ØÊÕÕ¾");
-		
+		v11.setName("å›æ”¶ç«™");
+		v11.addTag(new Tag("åƒåœ¾"));
+				
 		variableList.addVariable(v1);
 		variableList.addVariable(v2);
 		variableList.addVariable(v3);

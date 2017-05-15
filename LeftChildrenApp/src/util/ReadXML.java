@@ -18,8 +18,7 @@ public class ReadXML {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		
 		try {
-			File f = new File("D:/cmj/MyProject/eclipse/leftChildrenApplication/LeftChildrenApp"
-					+ "/res/xmlData/" + locationName + ".xml");
+			File f = new File(locationName);
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(f);
 			

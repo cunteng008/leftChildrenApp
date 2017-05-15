@@ -62,6 +62,9 @@ public class News {
 	}
 
 	public String getContent() {
+		if(content==null){
+			return "需要连接URL显示网页内容";
+		}
 	    return content;
 	}
 
@@ -77,12 +80,37 @@ public class News {
 		this.variableList = variableList;
 	}
 	
-	public List<Variable> getTagList() {
+	public List<Variable> getVaribleList() {
 		return variableList;
 	}
 	
 	public void addVariable(Variable variable) {
 		variableList.add(variable);
+	}
+	public void removeAllVariable(){
+		variableList.removeAll(variableList);
+	}
+	public void clearVariable(){
+		variableList.removeAll(variableList);
+	}
+	public List<String>  getAllLabel(){
+		List<String> allLabels = new ArrayList<String>(); 
+		for(Variable var:variableList){
+			for(Tag tag:var.getTagList()){
+				boolean hasInclude = false;
+				for(News news : tag.getNewsList()){
+					if(news.getTitle().equals(title)){
+						allLabels.add((String) tag.getName());
+						hasInclude = true;
+						break;
+					}
+				}
+				if(hasInclude){
+					break;
+				}				
+			}
+		}
+		return allLabels;
 	}
 	
 }

@@ -1,3 +1,5 @@
+
+
 import static org.junit.Assert.*;
 
 import java.util.List;
@@ -5,63 +7,36 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Location;
-import model.LocationCollection;
 import model.News;
+import model.NewsList;
 import util.ReadXML;
 
 public class ReadXMLTest {
-
+	
 	@Before
 	public void setUp() throws Exception {
 	}
 
 	@Test
-	public void testImportLocation() {
+	public void test() {
+		ReadXML.parseXML("../LeftChildrenApp/res/testData/testData.xml");
+		NewsList newsList = NewsList.getInstance();
+		List<News> news = newsList.getNewsList();
 		
-		ReadXML.importLocation("guangming");
-		ReadXML.importLocation("nanfangdaily");
-		ReadXML.importLocation("sichuan");
+		// 是否获得两条新闻
+		assertTrue(news.size() == 2);
 		
-		LocationCollection locationCollection = LocationCollection.getInstance();
+		// 判断新闻标题是否正确
+		assertTrue(news.get(0).getTitle().equals("青少年“身边最让我感动的人”评选揭晓"));
+		assertTrue(news.get(1).getTitle().equals("我省检察机关首次公布未成年人保护典型案例"));
 		
-		List<Location> locationList = locationCollection.getLocations();
+		// 判断内容flag是否正确
+		assertTrue(news.get(0).getHasContent() == true);
+		assertTrue(news.get(1).getHasContent() == false);
 		
-		// �Ƿ�������ֱ�ֽ
-		assertTrue(locationList.size() == 3);
-		
-		int sum = 0;
-		
-		for (Location location : locationList) {
-			List<News> newsList = location.getNews();
-			sum += newsList.size();
-			
-			for (News news : newsList) {
-				System.out.println(news.getTitle());
-				System.out.println(news.getCalendar().toString());
-				System.out.println(news.getType());
-				System.out.println(news.getWordCount() + "");
-				
-				if (news.getHasContent()) {
-					assertTrue(news.getTrueUrl() == null);
-					System.out.println(news.getContent());
-				}
-				else {
-					assertTrue(news.getContent() == null);
-					System.out.println(news.getTrueUrl());
-				}
-				System.out.println();
-			}
-		}
-		
-		// ��õ����������Ƿ���ȷ
-		assertTrue(sum == 1420 + 1156 + 1235);
-		
-	}
-
-	@Test
-	public void testParseXML() {
-		
+		// 判断各自的内容区域是否正确
+		assertTrue(news.get(0).getContent().contains("本报北京1月15日电记者李海秀"));
+		assertTrue(news.get(1).getTrueUrl().equals("http://epaper.scdaily.cn/shtml/scrb/20151229/119905.shtml"));
 	}
 
 }

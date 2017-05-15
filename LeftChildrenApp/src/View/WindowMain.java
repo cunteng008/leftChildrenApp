@@ -518,6 +518,7 @@ public class WindowMain extends WindowRoot {
    private class ShowNewsListListener implements MouseListener{		
 		public void mouseClicked(MouseEvent e) {
 			switchRightBodyCard("cardNewsList");
+			
 			updateJList();
 		}
 		public void mouseEntered(MouseEvent arg0) {}
@@ -875,16 +876,20 @@ public class WindowMain extends WindowRoot {
 		CardLayout c1 = (CardLayout) cardPanelNewsShow.getLayout();
 		if(card.equals("cardNewsList")){
 			c1.show(cardPanelNewsShow, "cardNewsList");
-					
+			lblDeleteNews.setVisible(true);
+			isViewContent = false;
 		}else if(card.equals("cardNewsContent")){
 			c1.show(cardPanelNewsShow, "cardNewsContent");
 			lblSetNewsTags.setVisible(true);
+			isViewContent = true;
+			lblDeleteNews.setVisible(false);
 		}
 	}	
 	private void switchLeftMenuCard(String card){
 		CardLayout c1 = (CardLayout) panelMenu.getLayout();
 		if(card.equals("cardTreeMenu")){
 			c1.show(panelMenu,"cardTreeMenu");
+			
 		}else if(card.equals("cardSetTags")){
 			c1.show(panelMenu,"cardSetTags");
 		}

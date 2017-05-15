@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.JList;
 
 import model.News;
+import model.NewsList;
 import model.VariableList;
 import renderer.JListRenderer;
 
@@ -19,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.ListModel;
 import javax.swing.SwingConstants;
 
+import broker.MainBroker;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -35,6 +37,7 @@ public class WindowRecycleBin extends WindowRoot{
 	
 	List<News> newsList;
 	int index=-1;
+	MainBroker mainBroker;
 	
 	//右部
 	JPanel cardPanelNewsShow;
@@ -54,6 +57,7 @@ public class WindowRecycleBin extends WindowRoot{
 		
 		newsList = VariableList.getInstance().getVariableList().
 						get(10).getTagList().get(0).getNewsList();
+		mainBroker = new MainBroker();
 		
 		init();
 	}
@@ -65,14 +69,26 @@ public class WindowRecycleBin extends WindowRoot{
 		panel.setBounds(0, 34, 234, 637);
 		getContentPane().add(panel);
 		
-		JLabel label = new JLabel("New label");
-		label.setIcon(new ImageIcon(WindowRecycleBin.class.getResource("/images/main_list.png")));
-		label.setBounds(10, 0, 32, 32);
-		panel.add(label);
+		JLabel lblNewsList = new JLabel("New label");
+		lblNewsList.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		lblNewsList.addMouseListener(new ShowNewsListListener());
+		lblNewsList.setIcon(new ImageIcon(WindowRecycleBin.class.getResource("/images/main_list.png")));
+		lblNewsList.setBounds(10, 0, 32, 32);
+		panel.add(lblNewsList);
 		
-		JButton button = new JButton("返回");
-		button.setBounds(131, 604, 93, 23);
-		panel.add(button);
+		JButton btnBack = new JButton("返回");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnBack.setBounds(131, 604, 93, 23);
+		panel.add(btnBack);
+		
+		JButton btnNewsBack = new JButton("还原");
+		btnNewsBack.addActionListener(new NewsBackListener());
+		btnNewsBack.setBounds(97, 162, 93, 23);
+		panel.add(btnNewsBack);
 		newsList = VariableList.getInstance().getVariableList().
 						get(10).getTagList().get(0).getNewsList();
 		
@@ -135,6 +151,51 @@ public class WindowRecycleBin extends WindowRoot{
 		lblContentDate.setOpaque(true);
 		panelNewsContent.add(lblContentDate);
 	}
+	/*
+	 * 
+	 * */
+	private class NewsBackListener implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+				
+			    if(index<0 && index>=newsList.size()){
+			    	return;
+			    }
+			    
+				index = jlist.getSelectedIndex();	
+				News news = newsList.get(index);
+				newsList.remove(index);
+				updateJList();
+				
+				NewsList.getInstance().addNews(news);
+				if(newsList.size()==0){
+					//删除新闻后若没有了新闻，则返回新闻列表页面
+					switchRightBodyCard("cardNewsList");
+				}
+				if(index>=0 && index < newsList.size()){
+					//有新闻则信息下一条新闻
+					showNewsContent(newsList.get(index));
+				}	
+				jlist.setSelectedIndex(index);
+				 if(index<0 && index>=newsList.size()){
+				    	return;
+				 }
+		}	   
+		
+	}
+	
+	 /*
+     * 显示新闻标题列表
+     * */ 
+   private class ShowNewsListListener implements MouseListener{		
+		public void mouseClicked(MouseEvent e) {
+			switchRightBodyCard("cardNewsList");
+			updateJList();
+		}
+		public void mouseEntered(MouseEvent arg0) {}
+		public void mouseExited(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {}	   
+   }
 	
 	  /*刷新JList显示
 	    * */

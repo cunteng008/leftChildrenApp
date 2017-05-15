@@ -93,5 +93,24 @@ public class News {
 	public void clearVariable(){
 		variableList.removeAll(variableList);
 	}
+	public List<String>  getAllLabel(){
+		List<String> allLabels = new ArrayList<String>(); 
+		for(Variable var:variableList){
+			for(Tag tag:var.getTagList()){
+				boolean hasInclude = false;
+				for(News news : tag.getNewsList()){
+					if(news.getTitle().equals(title)){
+						allLabels.add((String) tag.getName());
+						hasInclude = true;
+						break;
+					}
+				}
+				if(hasInclude){
+					break;
+				}				
+			}
+		}
+		return allLabels;
+	}
 	
 }

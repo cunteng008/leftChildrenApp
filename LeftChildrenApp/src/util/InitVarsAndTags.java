@@ -23,7 +23,7 @@ public class InitVarsAndTags {
 		v2.addTag(new Tag("评论"));
 		v2.addTag(new Tag("其他"));
 		
-		/* 待商榷 */
+//		/* 待商榷 */
 		Variable v3 = new Variable();
 		v3.setName("报道数量");
 		

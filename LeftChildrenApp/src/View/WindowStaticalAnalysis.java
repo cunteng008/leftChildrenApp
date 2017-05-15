@@ -8,6 +8,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
@@ -48,64 +50,91 @@ import renderer.MyTreeMenuMutableTreeNode;
 public class WindowStaticalAnalysis extends WindowRoot {
 	
 	List<News> newsList;
-	JPanel panel;
+	JPanel panelChoose;
 	
 	JPanel panelChart;
 	JPanel chartPanel;
+	JPanel panelCardChartShow;
+	private JTree tree;
 	
-	public WindowStaticalAnalysis() {		
+	
+	public WindowStaticalAnalysis() {	
+		super();
 		init();
 	}
 
 	
 	@Override
 	public void init() {
-		panel = new JPanel();
-		panel.setLayout(null);
-		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(0, 34, 330, 637);
-		getContentPane().add(panel);
 		
-	
+		JPanel panelShow = new JPanel();
+		panelShow.setBounds(330, 34, 800, 637);
+		getContentPane().add(panelShow);
+		panelShow.setLayout(null);
 		
-	
+		panelCardChartShow = new JPanel();
+		panelCardChartShow.setBounds(146, 56, 570, 379);
+		panelShow.add(panelCardChartShow);
+		panelCardChartShow.setLayout(new CardLayout(0, 0));
 		
-		leftChoose();
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(330, 34, 800, 637);
-		getContentPane().add(panel_1);
-		panel_1.setLayout(null);
-		
-		panelChart = new JPanel();
-		panelChart.setBounds(207, 95, 483, 268);
-		panel_1.add(panelChart);
-		panelChart.setLayout(new ctionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
-				 Variable var = VariableList.getInstance().getVariableList().get(0);
-				 paintPieChart(var);
+			
+		DefaultMutableTreeNode top = new DefaultMutableTreeNode("标签");
+		for(int i=0;i< VariableList.getInstance().getVariableList().size()-1;i++){
+			if(i==2){
+				continue;
 			}
-		});
-		button.setBounds(10, 10, 92, 23);
-		panel.add(button);
+		   Variable var=VariableList.getInstance().getVariableList().get(i);
+		   String varName = var.getName();
+		   DefaultMutableTreeNode node = new DefaultMutableTreeNode(varName);
+		   for(int j=0;j<var.getTagList().size();j++){
+			   Tag tag = var.getTagList().get(j);
+			   String tagName = tag.getName();
+			   node.add(new DefaultMutableTreeNode(tagName));
+		   }
+		   top.add(node);
+		}		
+		tree = new JTree(top);
+		tree.setBounds(0, 0, 78, 64);
+		tree.addMouseListener(new  TreeMenuListener());
+		JScrollPane scrollPane = new JScrollPane(tree);
+		scrollPane.setBounds(0, 34, 330, 637);
+		getContentPane().add(scrollPane);
+		 
 		
-		JButton button_1 = new JButton("中央一级的党报");
-		button_1.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				Tag tag = VariableList.getInstance().getVariableList().get(0).getTagList().get(0);
-				paintLineChart(tag);
-			}			
-		});
-		button_1.setBounds(10, 35, 133, 23);
-		panel.add(button_1);
+		for(int i=0;i< VariableList.getInstance().getVariableList().size()-1;i++){
+			if(i==2){
+				continue;
+			}
+		   Variable var=VariableList.getInstance().getVariableList().get(i);
+		   String varName = var.getName();
+		   panelCardChartShow.add(createPieChart(var),varName);
+		   for(int j=0;j<var.getTagList().size();j++){
+			   Tag tag = var.getTagList().get(j);
+			   String tagName = tag.getName();
+			   panelCardChartShow.add(createLineChart(tag),tagName);
+		   }
+		}
 		
 	}		
 	
+	 private class TreeMenuListener implements MouseListener{
+		public void mouseClicked(MouseEvent e) {
+			DefaultMutableTreeNode node =(DefaultMutableTreeNode)tree.getLastSelectedPathComponent();
+			Object userObject = node.getUserObject();
+			String name = (String) userObject;
+			if(name!=null){
+				switchLeftMenuCard(name);
+			}
+		}
+		public void mouseEntered(MouseEvent arg0) {	}
+		public void mouseExited(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {}
+	}
 	
-	
-	private void paintPieChart(Variable var){
+		
+	private JPanel createPieChart(Variable var){
 		 int sz = var.getTagList().size();
-		 System.out.println("报纸类别");
 		 double[] data = new double[sz]; 
 		 String[] keys = new String[sz];
 		 int i=0;
@@ -115,13 +144,11 @@ public class WindowStaticalAnalysis extends WindowRoot {
 			 i++;
 		 }
 		JFreeChart chart =	Piechart.createPieChart3D(var.getName(),Piechart.getDataPie(data, keys), keys);
-		chartPanel = new ChartPanel(chart); 
-		panelChart.remove(chartPanel);
-		panelChart.add(chartPanel);
+		JPanel chartPanel = new ChartPanel(chart); 
+		return chartPanel;
 	}
 	
-	private void paintLineChart(Tag tag){
-		
+	private JPanel createLineChart(Tag tag){		
 		Set<Integer> years = new HashSet<Integer>();
 		int year;
 		
@@ -154,7 +181,37 @@ public class WindowStaticalAnalysis extends WindowRoot {
 		String xLabel = "年份";
 		String yLabel = "新闻数量";
 		JFreeChart chart =  LineChart.createLineAndShapeChart(chartTitle,xLabel,yLabel,dataset);
-		chartPanel = new ChartPanel(chart); 
-		panelChart.add(chartPanel);
+		JPanel chartPanel = new ChartPanel(chart); 
+		//panelCardChart.add(chartPanel);
+		return chartPanel;
 	}
+	
+	
+	
+	
+	
+	private void switchLeftMenuCard(String card){
+		CardLayout c1 = (CardLayout) panelCardChartShow.getLayout();
+		for(int i=0;i< VariableList.getInstance().getVariableList().size()-1;i++){
+			if(i==2){
+				continue;
+			}
+			   Variable var=VariableList.getInstance().getVariableList().get(i);
+			   String varName = var.getName();
+			   if(card.equals(varName)){
+				   c1.show(panelCardChartShow,card);
+				   return;
+			   }
+			   for(int j=0;j<var.getTagList().size();j++){
+				   Tag tag = var.getTagList().get(j);
+				   String tagName = tag.getName();
+				   if(card.equals(tagName)){
+					   c1.show(panelCardChartShow,card);
+					   return;
+				   }
+			   }
+			}
+		
+	}	
+	
 }

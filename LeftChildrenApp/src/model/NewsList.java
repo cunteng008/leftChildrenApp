@@ -1,8 +1,9 @@
 package model;
+import java.io.Serializable;
 import java.util.*;
 
 /* Singleton */
-public class NewsList {
+public class NewsList implements Serializable {
 	
 	private static NewsList instance = new NewsList();
 	

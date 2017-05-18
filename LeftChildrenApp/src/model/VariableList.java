@@ -1,8 +1,9 @@
 package model;
+import java.io.Serializable;
 import java.util.*;
 
 /* Singleton */
-public class VariableList {
+public class VariableList implements Serializable{
 	
 	private static VariableList instance = new VariableList();
 	

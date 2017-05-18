@@ -1,7 +1,8 @@
 package model;
+import java.io.Serializable;
 import java.util.*;
 
-public class Tag {
+public class Tag implements Serializable {
 	
 	private String name;
 	private List<News> newsList;

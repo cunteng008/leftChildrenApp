@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="DESKTOP-IBEUH2M" name="InitVarsAndTagsTest" skipped="0" tests="1" time="0.047" timestamp="2017-05-15T14:29:40">
+<testsuite errors="0" failures="0" hostname="DESKTOP-IBEUH2M" name="InitVarsAndTagsTest" skipped="0" tests="1" time="0.26" timestamp="2017-05-15T14:42:55">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.USERDOMAIN_ROAMINGPROFILE" value="DESKTOP-IBEUH2M" />
@@ -76,7 +76,7 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.6 compiled on June 29 2015" />
     <property name="java.class.path" value="G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\TestingProject\bin;C:\Users\Lenovo\.p2\pool\plugins\org.junit_4.12.0.v201504281640\junit.jar;C:\Users\Lenovo\.p2\pool\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\LeftChildrenApp\bin;G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\LeftChildrenApp\char_lib\jcommon-1.0.23.jar;G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\LeftChildrenApp\char_lib\jfreechart-1.0.19.jar;G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\TestingProject;F:\Java\jdk1.8.0_121\lib\dt.jar;F:\Java\jdk1.8.0_121\lib\tools.jar;F:\Java\junit4\junit-4.12.jar;F:\Java\junit4\hamcrest-core-1.3.jar;G:\迅雷下载\junit-4.12.jar;C:\Users\Lenovo\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-launcher.jar;C:\Users\Lenovo\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant.jar;C:\Users\Lenovo\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-junit.jar;C:\Users\Lenovo\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-junit4.jar" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner InitVarsAndTagsTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\TestingProject\junit\TEST-InitVarsAndTagsTest.xml crashfile=G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\TestingProject\junitvmwatcher6708487758911409925.properties propsfile=G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\TestingProject\junit3388674032925424479.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner InitVarsAndTagsTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\TestingProject\junit\TEST-InitVarsAndTagsTest.xml crashfile=G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\TestingProject\junitvmwatcher4113244967184850793.properties propsfile=G:\大学\学习资料\团队项目开发\project\leftChildrenApp-cmj\TestingProject\junit3084623568475600619.properties" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
     <property name="env.LOGONSERVER" value="\\DESKTOP-IBEUH2M" />
     <property name="env.windir" value="C:\Windows" />
@@ -119,7 +119,7 @@
     <property name="env.PROCESSOR_LEVEL" value="6" />
     <property name="env.VBOX_MSI_INSTALL_PATH" value="C:\Program Files\Oracle\VirtualBox\" />
   </properties>
-  <testcase classname="InitVarsAndTagsTest" name="test" time="0.003" />
+  <testcase classname="InitVarsAndTagsTest" name="test" time="0.006" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

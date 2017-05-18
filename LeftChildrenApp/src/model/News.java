@@ -1,7 +1,8 @@
 package model;
+import java.io.Serializable;
 import java.util.*;
 
-public class News {
+public class News implements Serializable {
 
 	private String title;
 	private Calendar calendar;

@@ -30,7 +30,15 @@ import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionListener;
@@ -55,6 +63,7 @@ import model.VariableList;
 import renderer.JListRenderer;
 import renderer.MyTreeMenuMutableTreeNode;
 import renderer.TreeMenuRenderer;
+import util.InitVarsAndTags;
 import util.ReadXML;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -156,6 +165,21 @@ public class WindowMain extends WindowRoot {
 		rightTopArea();
 		//右边区域
 		rightArea();
+
+		// init news
+		NewsList mNews = NewsList.getInstance();
+		try {
+			FileInputStream myNewsIn = new FileInputStream("savedata/newsList");
+			if (myNewsIn != null)
+				mNews.setNewsList(((NewsList) readObjectFromFile("savedata/newsList")).getNewsList());
+		} catch (FileNotFoundException e) {
+			System.out.println("no local news data");
+		}
+	    newsList = mNews.getNewsList();
+
+	    updateJList();
+	    
+		saveAndExit();
 	}
 	
 /*
@@ -542,7 +566,6 @@ public class WindowMain extends WindowRoot {
 		    if(fileChooser.showOpenDialog(frame)==JFileChooser.APPROVE_OPTION ){
 		      String fileName = fileChooser.getSelectedFile().getAbsolutePath();
 		      mainBroker.openFile(fileName);
-		      newsList = NewsList.getInstance().getNewsList();  
 		      updateJList();
 		    }
 		}	
@@ -894,4 +917,49 @@ public class WindowMain extends WindowRoot {
 			c1.show(panelMenu,"cardSetTags");
 		}
 	}	
+	
+	private void saveAndExit() {
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				writeObjectToFile(NewsList.getInstance(), "savedata/newsList");
+				writeObjectToFile(VariableList.getInstance(), "savedata/variableList");
+			}
+		});
+	}
+	
+    public static void writeObjectToFile(Object obj, String fileName) {
+        File file =new File(fileName);
+        FileOutputStream out;
+        try {
+            out = new FileOutputStream(file);
+            ObjectOutputStream objOut=new ObjectOutputStream(out);
+            objOut.writeObject(obj);
+            objOut.flush();
+            objOut.close();
+            System.out.println("write " + fileName + " success!");
+        } catch (IOException e) {
+            System.out.println("write " + fileName + " failed");
+            e.printStackTrace();
+        }
+    }
+    
+    public static Object readObjectFromFile(String fileName) {
+        Object temp=null;
+        File file =new File(fileName);
+        FileInputStream in;
+        try {
+            in = new FileInputStream(file);
+            ObjectInputStream objIn=new ObjectInputStream(in);
+            temp=objIn.readObject();
+            objIn.close();
+            System.out.println("read " + fileName + " success!");
+        } catch (IOException e) {
+            System.out.println("read " + fileName + " failed");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return temp;
+    }
+	
 }

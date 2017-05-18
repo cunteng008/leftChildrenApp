@@ -1,8 +1,9 @@
 package model;
+import java.io.Serializable;
 import java.util.*;
 
 
-public class Variable {
+public class Variable implements Serializable {
 	
 	private String name;
 	private List<Tag> tagList;

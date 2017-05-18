@@ -670,19 +670,20 @@ public class WindowMain extends WindowRoot {
 		 MyTreeMenuMutableTreeNode node =(MyTreeMenuMutableTreeNode) 
 				 tree.getLastSelectedPathComponent();
 		 Object userObject = node.getUserObject();
-		
-		 if (userObject instanceof Variable) {
-			 Variable var = (Variable) userObject;
-			 if(var.getNewsList()==null){
-				 return;
-			 }
-			 newsList = var.getNewsList();
-			 updateJList();
-		 }else if(userObject instanceof Tag){
-			 Tag  tag = (Tag) userObject;
-			 newsList = tag.getNewsList();
-			 updateJList();			
-		 }
+		 System.out.println(userObject);
+		 
+//		 if (userObject instanceof Variable) {
+//			 Variable var = (Variable) userObject;
+//			 if(var.getNewsList()==null){
+//				 return;
+//			 }
+//			 newsList = var.getNewsList();
+//			 updateJList();
+//		 }else if(userObject instanceof Tag){
+//			 Tag  tag = (Tag) userObject;
+//			 newsList = tag.getNewsList();
+//			 updateJList();			
+//		 }
 	}
 	public void mouseEntered(MouseEvent arg0) {	}
 	public void mouseExited(MouseEvent arg0) {}

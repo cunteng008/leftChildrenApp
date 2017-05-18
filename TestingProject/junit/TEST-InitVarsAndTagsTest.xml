@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="DESKTOP-UCMVQ91" name="InitVarsAndTagsTest" skipped="0" tests="1" time="0.102" timestamp="2017-05-16T03:01:40">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="env.USERDOMAIN_ROAMINGPROFILE" value="DESKTOP-UCMVQ91" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/C:/Users/CMJ/.p2/pool/plugins/org.eclipse.pde.build_3.9.200.v20160204-0642/templates/" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="env.PROMPT" value="$P$G" />
+    <property name="os.name" value="Windows 10" />
+    <property name="sun.boot.class.path" value="D:\Program Files\Java\jre1.8.0_121\lib\resources.jar;D:\Program Files\Java\jre1.8.0_121\lib\rt.jar;D:\Program Files\Java\jre1.8.0_121\lib\sunrsasign.jar;D:\Program Files\Java\jre1.8.0_121\lib\jsse.jar;D:\Program Files\Java\jre1.8.0_121\lib\jce.jar;D:\Program Files\Java\jre1.8.0_121\lib\charsets.jar;D:\Program Files\Java\jre1.8.0_121\lib\jfr.jar;D:\Program Files\Java\jre1.8.0_121\classes" />
+    <property name="env.COMPUTERNAME" value="DESKTOP-UCMVQ91" />
+    <property name="env.CommonProgramW6432" value="C:\Program Files\Common Files" />
+    <property name="env.ALLUSERSPROFILE" value="C:\ProgramData" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="C:\Users\CMJ\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327" />
+    <property name="java.runtime.version" value="1.8.0_121-b13" />
+    <property name="env.HOMEPATH" value="\Users\CMJ" />
+    <property name="user.name" value="CMJ" />
+    <property name="user.language" value="zh" />
+    <property name="sun.boot.library.path" value="D:\Program Files\Java\jre1.8.0_121\bin" />
+    <property name="ant.project.default-target" value="build" />
+    <property name="ant.project.name" value="TestingProject" />
+    <property name="java.version" value="1.8.0_121" />
+    <property name="env.PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 60 Stepping 3, GenuineIntel" />
+    <property name="user.timezone" value="" />
+    <property name="env.TEMP" value="C:\Users\CMJ\AppData\Local\Temp" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="D:\Program Files\Java\jre1.8.0_121\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="env.HOMEDRIVE" value="C:" />
+    <property name="sun.jnu.encoding" value="GBK" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="ECLIPSE_HOME" value="../../../../../Program Files/eclipse/java-neon/eclipse/" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="52.0" />
+    <property name="user.country" value="CN" />
+    <property name="java.home" value="D:\Program Files\Java\jre1.8.0_121" />
+    <property name="env.PSModulePath" value="C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules" />
+    <property name="env.APPDATA" value="C:\Users\CMJ\AppData\Roaming" />
+    <property name="env.PUBLIC" value="C:\Users\Public" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="env.ComSpec" value="C:\WINDOWS\system32\cmd.exe" />
+    <property name="env.OS" value="Windows_NT" />
+    <property name="env.CommonProgramFiles" value="C:\Program Files\Common Files" />
+    <property name="ant.file" value="D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject\build.xml" />
+    <property name="os.version" value="10.0" />
+    <property name="env.ProgramW6432" value="C:\Program Files" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="25.121-b13" />
+    <property name="user.variant" value="" />
+    <property name="env.USERPROFILE" value="C:\Users\CMJ" />
+    <property name="ant.library.dir" value="C:\Users\CMJ\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib" />
+    <property name="junit.output.dir" value="junit" />
+    <property name="env.JAVA_HOME" value="D:\Program Files\Java\jdk1.8.0_121" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="env.TMP" value="C:\Users\CMJ\AppData\Local\Temp" />
+    <property name="env.FPS_BROWSER_USER_PROFILE_STRING" value="Default" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="env.GRAPHVIZ_DOT" value="D:\Program Files (x86)\Graphviz2.38\bin\dot.exe" />
+    <property name="user.script" value="" />
+    <property name="eclipse.pdebuild.scripts" value="/C:/Users/CMJ/.p2/pool/plugins/org.eclipse.pde.build_3.9.200.v20160204-0642/scripts/" />
+    <property name="user.home" value="C:\Users\CMJ" />
+    <property name="target" value="1.8" />
+    <property name="env.ProgramData" value="C:\ProgramData" />
+    <property name="env.SESSIONNAME" value="Console" />
+    <property name="env.ProgramFiles(x86)" value="C:\Program Files (x86)" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="env.CLASSPATH" value=".;D:\Program Files\Java\jdk1.8.0_121\lib\dt.jar;D:\Program Files\Java\jdk1.8.0_121\lib\tools.jar;" />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="env.NUMBER_OF_PROCESSORS" value="4" />
+    <property name="java.library.path" value="D:\Program Files\Java\jre1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files/Java/jre1.8.0_121/bin/server;D:/Program Files/Java/jre1.8.0_121/bin;D:/Program Files/Java/jre1.8.0_121/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\Java\jdk1.8.0_121\bin;D:\Program Files\Git\cmd;D:\Program Files (x86)\Graphviz2.38\bin;D:\Program Files\MATLAB\R2016a\runtime\win64;D:\Program Files\MATLAB\R2016a\bin;D:\Program Files\MATLAB\R2016a\polyspace\bin;D:\Program Files\Python\Python36-32\Scripts\;D:\Program Files\Python\Python36-32\;C:\Users\CMJ\Desktop;;." />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.6 compiled on June 29 2015" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner InitVarsAndTagsTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject\junit\TEST-InitVarsAndTagsTest.xml crashfile=D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject\junitvmwatcher2161723576271440048.properties propsfile=D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject\junit5175796974757666545.properties" />
+    <property name="java.class.path" value="D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject\bin;C:\Users\CMJ\.p2\pool\plugins\org.junit_4.12.0.v201504281640\junit.jar;C:\Users\CMJ\.p2\pool\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;D:\cmj\MyProject\eclipse\leftChildrenApplication\LeftChildrenApp\bin;D:\cmj\MyProject\eclipse\leftChildrenApplication\LeftChildrenApp\lib\jcommon-1.0.23.jar;D:\cmj\MyProject\eclipse\leftChildrenApplication\LeftChildrenApp\lib\jfreechart-1.0.19.jar;D:\cmj\MyProject\eclipse\leftChildrenApplication\LeftChildrenApp\lib\jsoup-1.10.2.jar;D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject;D:\Program Files\Java\jdk1.8.0_121\lib\dt.jar;D:\Program Files\Java\jdk1.8.0_121\lib\tools.jar;D:\jar\junit.jar;C:\Users\CMJ\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-launcher.jar;C:\Users\CMJ\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant.jar;C:\Users\CMJ\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-junit.jar;C:\Users\CMJ\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-junit4.jar" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.LOGONSERVER" value="\\DESKTOP-UCMVQ91" />
+    <property name="env.windir" value="C:\WINDOWS" />
+    <property name="env.PROCESSOR_ARCHITECTURE" value="AMD64" />
+    <property name="java.vm.specification.version" value="1.8" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="debuglevel" value="source,lines,vars" />
+    <property name="env.OneDrive" value="C:\Users\CMJ\OneDrive" />
+    <property name="env.ProgramFiles" value="C:\Program Files" />
+    <property name="env.ANT_HOME" value="C:\Users\CMJ\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327" />
+    <property name="env.PROCESSOR_REVISION" value="3c03" />
+    <property name="eclipse.pdebuild.home" value="/C:/Users/CMJ/.p2/pool/plugins/org.eclipse.pde.build_3.9.200.v20160204-0642/./" />
+    <property name="java.io.tmpdir" value="C:\Users\CMJ\AppData\Local\Temp\" />
+    <property name="env.CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="env.SystemRoot" value="C:\WINDOWS" />
+    <property name="env.FPS_BROWSER_APP_PROFILE_STRING" value="Internet Explorer" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.ext.dirs" value="D:\Program Files\Java\jre1.8.0_121\lib\ext;C:\WINDOWS\Sun\Java\lib\ext" />
+    <property name="ant.file.TestingProject" value="D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject\build.xml" />
+    <property name="user.dir" value="D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject" />
+    <property name="env.LOCALAPPDATA" value="C:\Users\CMJ\AppData\Local" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC" />
+    <property name="env.Path" value="D:/Program Files/Java/jre1.8.0_121/bin/server;D:/Program Files/Java/jre1.8.0_121/bin;D:/Program Files/Java/jre1.8.0_121/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\Java\jdk1.8.0_121\bin;D:\Program Files\Git\cmd;D:\Program Files (x86)\Graphviz2.38\bin;D:\Program Files\MATLAB\R2016a\runtime\win64;D:\Program Files\MATLAB\R2016a\bin;D:\Program Files\MATLAB\R2016a\polyspace\bin;D:\Program Files\Python\Python36-32\Scripts\;D:\Program Files\Python\Python36-32\;C:\Users\CMJ\Desktop;" />
+    <property name="org.apache.tools.ant.taskdefs.optional.junit.AggregateTransformer0" value="C:\Users\CMJ\AppData\Local\Temp\null378233009" />
+    <property name="basedir" value="D:\cmj\MyProject\eclipse\leftChildrenApplication\TestingProject" />
+    <property name="ant.java.version" value="1.8" />
+    <property name="ant.core.lib" value="C:\Users\CMJ\.p2\pool\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant.jar" />
+    <property name="env.USERNAME" value="CMJ" />
+    <property name="source" value="1.8" />
+    <property name="env.SystemDrive" value="C:" />
+    <property name="file.encoding" value="GBK" />
+    <property name="LeftChildrenApp.location" value="../LeftChildrenApp" />
+    <property name="env.USERDOMAIN" value="DESKTOP-UCMVQ91" />
+    <property name="ant.file.type.TestingProject" value="file" />
+    <property name="java.specification.version" value="1.8" />
+    <property name="ant.project.invoked-targets" value="build,ReadXMLTest (1),junitreport,InitVarsAndTagsTest" />
+    <property name="env.VBOX_MSI_INSTALL_PATH" value="D:\virtualbox\" />
+    <property name="env.PROCESSOR_LEVEL" value="6" />
+  </properties>
+  <testcase classname="InitVarsAndTagsTest" name="test" time="0.008" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

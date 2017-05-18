@@ -1,6 +1,8 @@
 package model;
 import java.util.*;
 
+import util.LoadFromUrl;
+
 public class News {
 
 	private String title;
@@ -10,6 +12,8 @@ public class News {
 	private boolean hasContent;
 	private String content;
 	private String trueUrl;
+	private String ID = "";
+	private boolean isDeleted;
 	
 	private List<Variable> variableList;
 
@@ -63,7 +67,7 @@ public class News {
 
 	public String getContent() {
 		if(content==null){
-			return "需要连接URL显示网页内容";
+			return LoadFromUrl.getNewsContentFromUrl(trueUrl);
 		}
 	    return content;
 	}
@@ -111,6 +115,29 @@ public class News {
 			}
 		}
 		return allLabels;
+	}
+	
+	public void setID(String ID){
+		this.ID = ID;
+	}
+	public String getID(){
+		return ID;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(boolean isTrash) {
+		this.isDeleted = isTrash;
+	}
+
+	public List<Variable> getVariableList() {
+		return variableList;
+	}
+
+	public void setVariableList(List<Variable> variableList) {
+		this.variableList = variableList;
 	}
 	
 }

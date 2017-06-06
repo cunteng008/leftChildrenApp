@@ -3,15 +3,20 @@ import java.io.Serializable;
 import java.util.*;
 
 /* Singleton */
+/* Used to be */
 public class VariableList implements Serializable {
 	
-	private static VariableList instance = new VariableList();
+//	private static VariableList instance = new VariableList();
+//	
+//	public static VariableList getInstance() {
+//		return instance;
+//	}
+//	
+//	private VariableList() {
+//		variableList = new ArrayList<Variable>();
+//	}
 	
-	public static VariableList getInstance() {
-		return instance;
-	}
-	
-	private VariableList() {
+	public VariableList() {
 		variableList = new ArrayList<Variable>();
 	}
 	

@@ -4,6 +4,7 @@ import java.util.*;
 import org.w3c.dom.*;
 import model.News;
 import model.NewsList;
+import model.User;
 
 import javax.xml.parsers.*;
 
@@ -11,9 +12,9 @@ import sun.misc.*;
 
 public class ReadXML {
 	
-	public static void parseXML(String locationName) {
+	public static void parseXML(User user, String locationName) {
 		
-		NewsList newsListSingleton = NewsList.getInstance();
+		NewsList newsListSingleton = user.getNewsList();
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		

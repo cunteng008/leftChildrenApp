@@ -2,6 +2,8 @@ package model;
 import java.io.Serializable;
 import java.util.*;
 
+import util.LoadFromUrl;
+
 public class News implements Serializable {
 
 	private String title;
@@ -64,7 +66,7 @@ public class News implements Serializable {
 
 	public String getContent() {
 		if(content==null){
-			return "需要连接URL显示网页内容";
+			return LoadFromUrl.getNewsContentFromUrl(trueUrl);
 		}
 	    return content;
 	}
@@ -112,6 +114,33 @@ public class News implements Serializable {
 			}
 		}
 		return allLabels;
+	}
+	
+	public boolean NewsEquals(News news){
+		if(titleEquals(news.getTitle())&&tagEquals(news)){
+			return true;
+		}
+		return false;
+	}
+	private boolean titleEquals(String title){
+		return this.title.equals(title);
+	}
+	private boolean tagEquals(News news){
+		List<String> newsTagList = news.getAllLabel();
+		List<String> thisTagList = getAllLabel();
+		int count=0;
+		for(String thisTagName:thisTagList){
+			for(String tagName:newsTagList){
+				if(thisTagName.equals(tagName)){
+					count++;
+					break;
+				}
+			}
+		}
+		if(count==thisTagList.size()){
+			return true;
+		}
+		return false;
 	}
 	
 }

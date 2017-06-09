@@ -76,11 +76,6 @@ public class WindowLogin extends WindowRoot {
 		
 		Logger logger = LogManager.getLogger("mylog");
 		
-		VariableList mVars;
-		NewsList mNews;
-		mVars = user.getVariableList();
-		// init news
-		mNews = user.getNewsList();
 		try {
 			FileInputStream myVarsIn = new FileInputStream("savedata/"+user.getName());
 			if (myVarsIn != null)
@@ -116,7 +111,7 @@ public class WindowLogin extends WindowRoot {
 				System.out.println(u+"与其即将合并");
 			    VariableList mVars;
 				try {	
-					;
+					
 					FileInputStream myVarsIn = new FileInputStream("savedata/"+otherUser.getName());
 					System.out.println("扫面是否有标签");
 					if (myVarsIn != null){

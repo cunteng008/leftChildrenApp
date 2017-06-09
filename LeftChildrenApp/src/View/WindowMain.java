@@ -64,6 +64,7 @@ import model.VariableList;
 import renderer.JListRenderer;
 import renderer.MyTreeMenuMutableTreeNode;
 import renderer.TreeMenuRenderer;
+import util.InitVarsAndTags;
 import util.ReadXML;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -86,6 +87,10 @@ public class WindowMain extends WindowRoot {
 	
 	MainBroker mainBroker ;
 	User user;
+	User testUser1,testUser2;
+	User tempStoreUser;
+	boolean isConsistencyTest = false;
+	
 	static int index= -1;
 	List<News> newsList;
 	boolean isViewContent = false;
@@ -488,6 +493,18 @@ public class WindowMain extends WindowRoot {
 		JLabel lblNewLabel_1 = new JLabel("欢迎"+user.getName());
 		lblNewLabel_1.setBounds(10, 10, 233, 20);
 		panelRightTop.add(lblNewLabel_1);
+		
+		JLabel label = new JLabel("一致性检测");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				new WindowConsistencyDetection();
+			}
+		});
+		label.setBounds(637, 5, 93, 25);
+		panelRightTop.add(label);
+		
+		
 	}
     
 
@@ -507,7 +524,6 @@ public class WindowMain extends WindowRoot {
 						}
 					}
 				});
-
 			
 		}
 		public void mouseEntered(MouseEvent arg0) {}

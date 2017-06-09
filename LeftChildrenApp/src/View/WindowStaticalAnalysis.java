@@ -42,6 +42,7 @@ import chart.LineChart;
 import chart.Piechart;
 import model.News;
 import model.Tag;
+import model.User;
 import model.Variable;
 import model.VariableList;
 import renderer.JListRenderer;
@@ -50,6 +51,7 @@ import renderer.MyTreeMenuMutableTreeNode;
 public class WindowStaticalAnalysis extends WindowRoot {
 	
 	List<News> newsList;
+	User user;
 	JPanel panelChoose;
 	
 	JPanel panelChart;
@@ -58,12 +60,13 @@ public class WindowStaticalAnalysis extends WindowRoot {
 	private JTree tree;
 	
 	
-	public WindowStaticalAnalysis() {	
+	public WindowStaticalAnalysis(User user) {	
 		super();
+		this.user = user;
 		init();
 	}
-
-	
+//
+//	
 	@Override
 	public void init() {
 		
@@ -79,11 +82,11 @@ public class WindowStaticalAnalysis extends WindowRoot {
 		
 			
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode("标签");
-		for(int i=0;i< VariableList.getInstance().getVariableList().size()-1;i++){
+		for(int i=0;i< user.getVariableList().getVariableList().size()-1;i++){
 			if(i==2){
 				continue;
 			}
-		   Variable var=VariableList.getInstance().getVariableList().get(i);
+		   Variable var=user.getVariableList().getVariableList().get(i);
 		   String varName = var.getName();
 		   DefaultMutableTreeNode node = new DefaultMutableTreeNode(varName);
 		   for(int j=0;j<var.getTagList().size();j++){
@@ -101,11 +104,11 @@ public class WindowStaticalAnalysis extends WindowRoot {
 		getContentPane().add(scrollPane);
 		 
 		
-		for(int i=0;i< VariableList.getInstance().getVariableList().size()-1;i++){
+		for(int i=0;i< user.getVariableList().getVariableList().size()-1;i++){
 			if(i==2){
 				continue;
 			}
-		   Variable var=VariableList.getInstance().getVariableList().get(i);
+		   Variable var=user.getVariableList().getVariableList().get(i);
 		   String varName = var.getName();
 		   panelCardChartShow.add(createPieChart(var),varName);
 		   for(int j=0;j<var.getTagList().size();j++){
@@ -120,6 +123,9 @@ public class WindowStaticalAnalysis extends WindowRoot {
 	 private class TreeMenuListener implements MouseListener{
 		public void mouseClicked(MouseEvent e) {
 			DefaultMutableTreeNode node =(DefaultMutableTreeNode)tree.getLastSelectedPathComponent();
+			if(node == null){
+				 return;
+			 }
 			Object userObject = node.getUserObject();
 			String name = (String) userObject;
 			if(name!=null){
@@ -187,16 +193,13 @@ public class WindowStaticalAnalysis extends WindowRoot {
 	}
 	
 	
-	
-	
-	
 	private void switchLeftMenuCard(String card){
 		CardLayout c1 = (CardLayout) panelCardChartShow.getLayout();
-		for(int i=0;i< VariableList.getInstance().getVariableList().size()-1;i++){
+		for(int i=0;i< user.getVariableList().getVariableList().size()-1;i++){
 			if(i==2){
 				continue;
 			}
-			   Variable var=VariableList.getInstance().getVariableList().get(i);
+			   Variable var=user.getVariableList().getVariableList().get(i);
 			   String varName = var.getName();
 			   if(card.equals(varName)){
 				   c1.show(panelCardChartShow,card);

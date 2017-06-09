@@ -58,6 +58,7 @@ import broker.MainBroker;
 import model.News;
 import model.NewsList;
 import model.Tag;
+import model.User;
 import model.Variable;
 import model.VariableList;
 import renderer.JListRenderer;
@@ -84,6 +85,7 @@ import javax.swing.ListModel;
 public class WindowMain extends WindowRoot {
 	
 	MainBroker mainBroker ;
+	User user;
 	static int index= -1;
 	List<News> newsList;
 	boolean isViewContent = false;
@@ -138,9 +140,13 @@ public class WindowMain extends WindowRoot {
 	private JButton btnRecycleBin;
 	JButton btnDeleteNews;  // 在心事新闻内容时的删除键
 				
-	public WindowMain() {
+	public WindowMain(User user) {
+		super();
+		this.user = user;
 		getContentPane().setLayout(null);
-		mainBroker = new MainBroker();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+			
+		mainBroker = new MainBroker(user);
 		init();			
 	}
 
@@ -165,20 +171,12 @@ public class WindowMain extends WindowRoot {
 		//右边区域
 		rightArea();
 		
-		// init news
-				NewsList mNews = NewsList.getInstance();
-				try {
-					FileInputStream myNewsIn = new FileInputStream("savedata/newsList");
-					if (myNewsIn != null)
-						mNews.setNewsList(((NewsList) readObjectFromFile("savedata/newsList")).getNewsList());
-				} catch (FileNotFoundException e) {
-					System.out.println("no local news data");
-				}
-			    newsList = mNews.getNewsList();
+		
+	    newsList = user.getNewsList().getNewsList();
 
-			    updateJList();
-			    
-				saveAndExit();
+	    updateJList();
+	    
+		saveAndExit();
 	}
 	
 /*
@@ -238,7 +236,7 @@ public class WindowMain extends WindowRoot {
 				
 	}
 	private void tagsMenu(){
-		List<Variable> varList = VariableList.getInstance().getVariableList();
+		List<Variable> varList = user.getVariableList().getVariableList();
 		lblNewLabel = new JLabel("报纸类型");
 		lblNewLabel.setOpaque(true);
 		lblNewLabel.setBounds(10, 10, 194, 23);
@@ -486,6 +484,10 @@ public class WindowMain extends WindowRoot {
 		lblChart.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		lblChart.setBounds(813, 5, 37, 25);
 		panelRightTop.add(lblChart);
+		
+		JLabel lblNewLabel_1 = new JLabel("欢迎"+user.getName());
+		lblNewLabel_1.setBounds(10, 10, 233, 20);
+		panelRightTop.add(lblNewLabel_1);
 	}
     
 
@@ -499,7 +501,7 @@ public class WindowMain extends WindowRoot {
 			 EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							WindowRoot frame = new WindowStaticalAnalysis();
+							WindowRoot frame = new WindowStaticalAnalysis(user);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -508,32 +510,11 @@ public class WindowMain extends WindowRoot {
 
 			
 		}
-
-		@Override
-		public void mouseEntered(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-    	
-    }
+		public void mouseEntered(MouseEvent arg0) {}
+		public void mouseExited(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {}
+     }
     
     /*
      * 显示新闻标题列表
@@ -564,8 +545,8 @@ public class WindowMain extends WindowRoot {
 		public void actionPerformed(ActionEvent arg0) {		
 		    if(fileChooser.showOpenDialog(frame)==JFileChooser.APPROVE_OPTION ){
 		      String fileName = fileChooser.getSelectedFile().getAbsolutePath();
-		      mainBroker.openFile(fileName);
-		      newsList = NewsList.getInstance().getNewsList();  
+		      ReadXML.parseXML(user, fileName);
+		      newsList = user.getNewsList().getNewsList();  
 		      updateJList();
 		    }
 		}	
@@ -597,7 +578,7 @@ public class WindowMain extends WindowRoot {
    }
    private class UnclassifiedListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			newsList = NewsList.getInstance().getNewsList();
+			newsList = user.getNewsList().getNewsList();
 			lblDeleteNews.setVisible(true);
 			btnDeleteNews.setVisible(true);
 			lblSetNewsTags.setVisible(true);
@@ -610,7 +591,7 @@ public class WindowMain extends WindowRoot {
 		   EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						WindowRoot frame = new WindowRecycleBin();
+						WindowRoot frame = new WindowRecycleBin(user);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -692,6 +673,9 @@ public class WindowMain extends WindowRoot {
 		 int selRow = tree.getRowForLocation(e.getX(), e.getY());
 		 MyTreeMenuMutableTreeNode node =(MyTreeMenuMutableTreeNode) 
 				 tree.getLastSelectedPathComponent();
+		 if(node == null){
+			 return;
+		 }
 		 Object userObject = node.getUserObject();
 		 System.out.println(userObject);
 		 
@@ -769,7 +753,7 @@ public class WindowMain extends WindowRoot {
      * */
     private void deleteNews(){
     	if(index>=0 && index < newsList.size()){  
-    		Tag trachTag = VariableList.getInstance().getVariableList().get(10).getTagList()
+    		Tag trachTag = user.getVariableList().getVariableList().get(10).getTagList()
 					.get(0); 
     		trachTag.addNews(newsList.get(index));
     		newsList.remove(index);
@@ -779,7 +763,7 @@ public class WindowMain extends WindowRoot {
      * 初始化树菜单节点
      * */
     private void initJTree(){
-    	for(Variable var:VariableList.getInstance().getVariableList()){
+    	for(Variable var:user.getVariableList().getVariableList()){
     		if(var.getName().equals("报道数量") || var.getName().equals("回收站")){
 				continue;
 			}
@@ -927,8 +911,8 @@ public class WindowMain extends WindowRoot {
 	private void saveAndExit() {
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				writeObjectToFile(NewsList.getInstance(), "savedata/newsList");
-				writeObjectToFile(VariableList.getInstance(), "savedata/variableList");
+				System.out.println(user.getName());
+				writeObjectToFile(user, "savedata/"+user.getName());
 			}
 		});
 	}

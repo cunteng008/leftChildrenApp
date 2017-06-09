@@ -6,6 +6,7 @@ import javax.swing.JList;
 
 import model.News;
 import model.NewsList;
+import model.User;
 import model.VariableList;
 import renderer.JListRenderer;
 
@@ -36,6 +37,7 @@ import java.awt.event.MouseListener;
 public class WindowRecycleBin extends WindowRoot{
 	
 	List<News> newsList;
+	User user;
 	int index=-1;
 	MainBroker mainBroker;
 	
@@ -53,11 +55,13 @@ public class WindowRecycleBin extends WindowRoot{
 	private JScrollPane scrollPaneContent;
 	
 	
-	public WindowRecycleBin(){
+	public WindowRecycleBin(User user){
+		super();
+		this.user = user;
 		
-		newsList = VariableList.getInstance().getVariableList().
-						get(10).getTagList().get(0).getNewsList();
-		mainBroker = new MainBroker();
+		newsList = user.getVariableList().getVariableList().get(10).getTagList().get(0).
+						getNewsList();
+		mainBroker = new MainBroker(user);
 		
 		init();
 	}
@@ -79,7 +83,7 @@ public class WindowRecycleBin extends WindowRoot{
 		JButton btnBack = new JButton("返回");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				dispose();  
 			}
 		});
 		btnBack.setBounds(131, 604, 93, 23);
@@ -89,8 +93,8 @@ public class WindowRecycleBin extends WindowRoot{
 		btnNewsBack.addActionListener(new NewsBackListener());
 		btnNewsBack.setBounds(97, 162, 93, 23);
 		panel.add(btnNewsBack);
-		newsList = VariableList.getInstance().getVariableList().
-						get(10).getTagList().get(0).getNewsList();
+		newsList = user.getVariableList().getVariableList().get(10).getTagList().get(0).
+				getNewsList();
 		
 		cardPanelNewsShow = new JPanel();
 		cardPanelNewsShow.setBackground(Color.LIGHT_GRAY);
@@ -166,7 +170,7 @@ public class WindowRecycleBin extends WindowRoot{
 				newsList.remove(index);
 				updateJList();
 				
-				NewsList.getInstance().addNews(news);
+				user.getNewsList().addNews(news);
 				if(newsList.size()==0){
 					//删除新闻后若没有了新闻，则返回新闻列表页面
 					switchRightBodyCard("cardNewsList");

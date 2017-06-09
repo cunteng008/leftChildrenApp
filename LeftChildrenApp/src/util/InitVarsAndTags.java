@@ -1,14 +1,15 @@
 package util;
 
 import model.Tag;
+import model.User;
 import model.Variable;
 import model.VariableList;
 
 public class InitVarsAndTags {
 	
-	public static void init() {
+	public static void init(User user) {
 		
-		VariableList variableList = VariableList.getInstance();
+		VariableList variableList = user.getVariableList();
 		
 		Variable v1 = new Variable();
 		v1.setName("报纸类型");

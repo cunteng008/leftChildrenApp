@@ -3,15 +3,20 @@ import java.io.Serializable;
 import java.util.*;
 
 /* Singleton */
+/* Used to be */
 public class NewsList implements Serializable {
 	
-	private static NewsList instance = new NewsList();
+//	private static NewsList instance = new NewsList();
+//	
+//	public static NewsList getInstance() {
+//		return instance;
+//	}
+//	
+//	private NewsList() {
+//		newsList = new ArrayList<News>();
+//	}
 	
-	public static NewsList getInstance() {
-		return instance;
-	}
-	
-	private NewsList() {
+	public NewsList() {
 		newsList = new ArrayList<News>();
 	}
 	

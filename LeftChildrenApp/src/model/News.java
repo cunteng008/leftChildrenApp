@@ -2,8 +2,6 @@ package model;
 import java.io.Serializable;
 import java.util.*;
 
-import util.LoadFromUrl;
-
 public class News implements Serializable {
 
 	private String title;
@@ -13,8 +11,6 @@ public class News implements Serializable {
 	private boolean hasContent;
 	private String content;
 	private String trueUrl;
-	private String ID = "";
-	private boolean isDeleted;
 	
 	private List<Variable> variableList;
 
@@ -68,7 +64,7 @@ public class News implements Serializable {
 
 	public String getContent() {
 		if(content==null){
-			return LoadFromUrl.getNewsContentFromUrl(trueUrl);
+			return "需要连接URL显示网页内容";
 		}
 	    return content;
 	}
@@ -116,29 +112,6 @@ public class News implements Serializable {
 			}
 		}
 		return allLabels;
-	}
-	
-	public void setID(String ID){
-		this.ID = ID;
-	}
-	public String getID(){
-		return ID;
-	}
-
-	public boolean isDeleted() {
-		return isDeleted;
-	}
-
-	public void setIsDeleted(boolean isTrash) {
-		this.isDeleted = isTrash;
-	}
-
-	public List<Variable> getVariableList() {
-		return variableList;
-	}
-
-	public void setVariableList(List<Variable> variableList) {
-		this.variableList = variableList;
 	}
 	
 }

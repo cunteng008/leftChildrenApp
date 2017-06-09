@@ -10,9 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.User;
+
 public abstract class WindowRoot extends JFrame {
 	// 标题
 	private JLabel lblTitle;
+	
 	
 	public WindowRoot() {
 		

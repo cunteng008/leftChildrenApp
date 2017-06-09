@@ -5,15 +5,27 @@ import java.util.List;
 import model.News;
 import model.NewsList;
 import model.Tag;
+import model.User;
 import model.Variable;
 import model.VariableList;
 import util.ReadXML;
 
 public class MainBroker {
-	
-	public void openFile(String fileName){
-		ReadXML.parseXML(fileName);		
+	NewsList UnclassifiedNewsList = null;
+	VariableList variableList = null;
+	public MainBroker(User user){
+		UnclassifiedNewsList =  user.getNewsList();
+		variableList = user.getVariableList();
 	}
+	
+	public void setUnclassifiedNewsList(NewsList unclassifiedNewsList) {
+		UnclassifiedNewsList = unclassifiedNewsList;
+	}
+	public void setVariableList(VariableList variableList) {
+		this.variableList = variableList;
+	}
+
+
 	public void setTags(News news,List<String> tagNames){
 		List<Variable> varList = news.getVaribleList();
 		if(tagNames.size()==0 &&  varList.size()==0 ){
@@ -21,11 +33,11 @@ public class MainBroker {
 		}else if(tagNames.size()==0){
 			System.out.println("现在前没选");
 			if(varList.size()>0){
-				NewsList.getInstance().getNewsList().add(news);
+				UnclassifiedNewsList.getNewsList().add(news);
 			}			
 		}else if(varList.size()==0){
 			if(tagNames.size()>0){
-				NewsList.getInstance().getNewsList().remove(news);
+				UnclassifiedNewsList.getNewsList().remove(news);
 			}			
 		}
 		for(Variable var:varList){
@@ -36,7 +48,7 @@ public class MainBroker {
 		news.removeAllVariable();
 		
 		boolean hasAttachTags;
-		for(Variable var:VariableList.getInstance().getVariableList()){	
+		for(Variable var:variableList.getVariableList()){	
 			hasAttachTags = false;
 			for(Tag tag:var.getTagList()){
 				
